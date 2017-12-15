@@ -4,7 +4,7 @@
 
 ## 命令说明
 
-如果使用的是 Yarn:
+如果使用的是 Yarn:
 
 ```bash
 # 安装依赖
@@ -17,7 +17,7 @@ yarn run dev
 yarn run build
 ```
 
-如果使用的是 NPM:
+如果使用的是 NPM:
 
 ```bash
 # 安装依赖
