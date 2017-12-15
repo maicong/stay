@@ -1,6 +1,8 @@
 # 短代码
 
-> 短代码注册信息在 `add-shortcode.php`
+> 短代码注册信息在 [`shortcode.php`](shortcode.php)
+
+在线预览：https://maicong.me/shortcode
 
 自带的短代码列表：
 
