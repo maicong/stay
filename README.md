@@ -2,6 +2,15 @@
 
 ![screenshot.png](screenshot.png)
 
+## 使用说明
+
+1. 前往 [Releases](https://github.com/maicong/stay/releases) 下载最新发布版本
+2. 将解压后的文件夹重命名为 `stay`
+3. 移动主题目录 `stay` 到 Typecho 的 `usr/themes` 里
+4. 将 `stay/plugins` 里的主题定制插件 `Stay` 移动到 Typecho 的 `usr/plugins` 里
+5. 进入 Typecho 管理后台，在 `控制台->外观` 找到 `Stay` 并启用
+6. 进入 Typecho 管理后台，在 `控制台->插件` 找到 `Stay` 并启用
+
 ## 特色介绍
 
 **响应式**
@@ -56,15 +65,6 @@
 
 听说压缩那么一下下可以增加一点点访问速度
 
-## 使用说明
-
-1. 前往 [Releases][1] 下载最新发布版本
-2. 将解压后的文件夹重命名为 `stay`
-3. 移动主题目录 `stay` 到 Typecho 的 `usr/themes` 里
-4. 将 `stay/plugins` 里的主题定制插件 `Stay` 移动到 Typecho 的 `usr/plugins` 里
-5. 进入 Typecho 管理后台，在 `控制台->外观` 找到 `Stay` 并启用
-6. 进入 Typecho 管理后台，在 `控制台->插件` 找到 `Stay` 并启用
-
 ## 功能配置
 
 控制台->外观->设置外观:
@@ -77,18 +77,14 @@
 
 ## 支持的短代码
 
-请查看 [SHORTCODE.md][2]
+请查看 [SHORTCODE.md](SHORTCODE.md)
 
 ## 特殊操作
 
 `assets` 为主题资源目录，为了更好的开发，我使用了 `webpack` 来构建资源文件
 
-如果你有自定义的样式和脚本内容，可以在 assets 目录里进行增删改，详情使用方法请查看 [assets/README.md][3]
+如果你有自定义的样式和脚本内容，可以在 assets 目录里进行增删改，详情使用方法请查看 [assets/README.md](assets/README.md)
 
 ## 使用协议
 
 The MIT License (MIT)
-
-[1]: https://github.com/maicong/stay/releases
-[2]: https://github.com/maicong/stay/blob/master/SHORTCODE.md
-[3]: https://github.com/maicong/stay/blob/master/assets/README.md
