@@ -1,4 +1,4 @@
-# Stay - 一款相应式 Typecho 主题 stay
+# Stay - 一款响应式 Typecho 主题
 
 ![screenshot.png](screenshot.png)
 
