@@ -14,7 +14,7 @@ $this->need('header.php');
 ?>
 <main class="main">
     <div class="container">
-        <div class="page__404">
+        <div class="card page__404">
             <h2 class="not__title">404</h2>
             <p class="not__content">没错，你要查看的页面被我吃了</p>
         </div>

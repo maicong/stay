@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.0.1
+ * @since   1.1.0
  *
  */
 
@@ -19,8 +19,8 @@ $this->need('header.php');
         <?php endif; ?>
         <?php if ($this->have()): ?>
         <?php while($this->next()): ?>
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-            <header class="post__header<?php if (!getFields($this, 'thumbnail')): ?> post__no__thumb<?php endif; ?>">
+        <article class="card post" itemscope itemtype="http://schema.org/BlogPosting">
+            <header class="card post__header<?php if (!getFields($this, 'thumbnail')): ?> post__no__thumb<?php endif; ?>">
                 <?php if (getFields($this, 'thumbnail')): ?>
                     <a href="<?php $this->permalink();?>" class="post__thumb">
                     <img src="<?php echo __LAZYIMG__; ?>" data-original="<?php echo getFields($this, 'thumbnail'); ?>" alt="<?php $this->title() ?>">

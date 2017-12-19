@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.0.1
+ * @since   1.1.0
  *
  */
 
@@ -110,9 +110,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - �
             </nav>
         <?php endif; ?>
         <?php if (!$this->is('index')): ?>
-            <a class="header__back" href="<?php $this->options->siteUrl(); ?>" title="回到首页">
-                <span>⇐</span>
-            </a>
+            <a class="header__back" href="<?php $this->options->siteUrl(); ?>" title="回到首页"></a>
         <?php endif; ?>
     </div>
 </header>

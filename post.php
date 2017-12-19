@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.0.0
+ * @since   1.1.0
  *
  */
 
@@ -14,7 +14,7 @@ $this->need('header.php');
 ?>
 <main class="main" role="main">
     <div class="container">
-        <article class="post single" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="card post single" itemscope itemtype="http://schema.org/BlogPosting">
             <div id="post-content" class="post__content" itemprop="articleBody">
                 <?php getContent($this->content);?>
             </div>

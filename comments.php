@@ -5,13 +5,13 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.0.0
+ * @since   1.1.0
  *
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
-<section id="comments" class="comments">
+<section id="comments" class="card comments">
     <?php $this->comments()->to($comments); ?>
     <?php if ($this->allow('comment')): ?>
         <form method="post" action="<?php $this->commentUrl(); ?>" id="comment-form" class="form" role="form">

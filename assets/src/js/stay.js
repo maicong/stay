@@ -6,7 +6,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.0.1
+ * @since   1.1.0
  *
  */
 
@@ -338,9 +338,9 @@ $(function () {
     img.onload = () => {
       if (
         img.width > $('#post-content').width() * 2 / 3 &&
-        img.height > img.width * 2 / 3
+        img.height > img.width * 1 / 3
       ) {
-        $(this).addClass('aligncenter')
+        $(this).addClass('card aligncenter')
       }
     }
   })
