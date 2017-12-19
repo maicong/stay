@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.0.0
+ * @since   1.0.1
  *
  */
 
@@ -14,10 +14,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 define('__LAZYIMG__', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2P8+vXrfwAJpgPg8gE+iwAAAABJRU5ErkJggg==');
 
 // 获取自定义字段
-function getFields($key) {
-    $options = Typecho_Widget::widget('Widget_Options');
-    if (isset($options->fields->{$key})) {
-        return $options->fields->{$key};
+function getFields($post, $key) {
+    $value = $post->fields->{$key};
+    if ($value) {
+        return $value;
     }
 }
 

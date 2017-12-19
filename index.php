@@ -4,7 +4,7 @@
  *
  * @package Stay
  * @author MaiCong
- * @version 1.0.0
+ * @version 1.0.1
  * @link http://maicong.me
  */
 
@@ -18,10 +18,10 @@ $this->need('header.php');
         <?php endif; ?>
         <?php while($this->next()): ?>
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-            <header class="post__header<?php if (!getFields('thumbnail')): ?> post__no__thumb<?php endif; ?>">
-                <?php if (getFields('thumbnail')): ?>
+            <header class="post__header<?php if (!getFields($this, 'thumbnail')): ?> post__no__thumb<?php endif; ?>">
+                <?php if (getFields($this, 'thumbnail')): ?>
                     <a href="<?php $this->permalink(); ?>" class="post__thumb">
-                    <img src="<?php echo __LAZYIMG__; ?>" data-original="<?php echo getFields('thumbnail'); ?>" alt="<?php $this->title(); ?>">
+                    <img src="<?php echo __LAZYIMG__; ?>" data-original="<?php echo getFields($this, 'thumbnail'); ?>" alt="<?php $this->title(); ?>">
                     </a>
                 <?php endif; ?>
                 <div class="post__header__warpper">

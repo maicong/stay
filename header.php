@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.0.0
+ * @since   1.0.1
  *
  */
 
@@ -43,14 +43,14 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - ç¬
     <meta property="og:url" content="<?php $this->permalink(); ?>">
     <meta property="og:description" content="<?php getExcerpt($this->description); ?>">
     <meta property="og:author" content="<?php $this->author(); ?>">
-    <meta property="og:image" content="<?php getFields('thumbnail'); ?>">
+    <meta property="og:image" content="<?php getFields($this, 'thumbnail'); ?>">
     <meta property="og:release_date" content="<?php $this->date('c'); ?>">
     <meta property="article:published_time" content="<?php $this->date('c'); ?>">
     <meta property="article:author" content="<?php $this->author(); ?>">
     <meta property="article:published_first" content="<?php $this->permalink(); ?>">
     <meta itemprop="name" content="<?php $this->title(); ?> - <?php $this->options->title(); ?>">
     <meta itemprop="description" content="<?php getExcerpt($this->description); ?>">
-    <meta itemprop="image" content="<?php getFields('thumbnail'); ?>">
+    <meta itemprop="image" content="<?php getFields($this, 'thumbnail'); ?>">
     <meta itemprop="url" content="<?php $this->permalink(); ?>">
     <link rel="canonical" href="<?php $this->permalink(); ?>">
 <?php endif; ?>
