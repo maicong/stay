@@ -6,7 +6,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.0.0
+ * @since   1.0.1
  *
  */
 
@@ -333,8 +333,15 @@ $(function () {
 
   // 文章图片居中
   $('#post-content img').each(function () {
-    if (!$(this).attr('class')) {
-      $(this).addClass('aligncenter')
+    const img = new window.Image()
+    img.src = $(this).data('original')
+    img.onload = () => {
+      if (
+        img.width > $('#post-content').width() * 2 / 3 &&
+        img.height > img.width * 2 / 3
+      ) {
+        $(this).addClass('aligncenter')
+      }
     }
   })
 
