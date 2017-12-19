@@ -4,7 +4,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.0.0
+ * @since   1.1.0
  *
  */
 
@@ -20,7 +20,7 @@ body {
   width: 100%;
   min-width: 320px;
   margin: 0;
-  color: #666;
+  color: #555;
   background-color: #eee;
 }
 
@@ -154,13 +154,18 @@ samp {
   font-size: 1em;
 }
 
-code {
-  padding: 0.1rem 0.4rem;
-  margin: 0 0.1rem;
+code,
+kbd {
+  padding: 0.2em 0.4em;
+  margin: 0 0.25rem;
   color: #378e81;
-  font-size: 90%;
+  font-size: 85%;
   background-color: #e4f5ef;
-  border-radius: 4px;
+  border-radius: 3px;
+}
+
+code br {
+  display: none;
 }
 
 pre {
@@ -175,6 +180,14 @@ pre code {
   font-size: inherit;
   margin: 0;
   border-radius: 0;
+}
+
+del code {
+  text-decoration: inherit;
+}
+
+blockquote {
+  margin: 0;
 }
 
 button,
@@ -275,12 +288,9 @@ th {
 
 ul,
 ol {
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 h1,
