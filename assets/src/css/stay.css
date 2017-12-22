@@ -946,6 +946,8 @@
 }
 
 .main .post__content .mc-tabs .tabs-title {
+  display: flex;
+  align-items: center;
   padding-left: 0;
   margin-bottom: 0;
   overflow: hidden;
@@ -953,15 +955,17 @@
 
 .main .post__content .mc-tabs .tabs-title li {
   list-style: none;
-  float: left;
-  padding-bottom: .08333rem;
-  margin-right: -.08333rem;
-  border: .08333rem solid #e3e3e3;
+  padding: 0;
+  margin-top: 0;
+  margin-right: -1PX;
+  border: 1PX solid #e3e3e3;
 }
 
 .main .post__content .mc-tabs .tabs-title li a {
   display: block;
-  padding: .66667rem 1.25rem;
+  padding: 9px 18px;
+  margin: 0;
+  text-decoration: none;
   color: #777;
   background: #f6f5f5;
 }
@@ -980,9 +984,9 @@
 }
 
 .main .post__content .mc-tabs .tabs-container {
-  padding: .83333rem 1.25rem;
-  margin-top: -.08333rem;
-  border: .08333rem solid #e3e3e3;
+  padding: 9px 18px;
+  margin-top: -1PX;
+  border: 1PX solid #e3e3e3;
 }
 
 .main .post__content .mc-tabs .tabs-content {
