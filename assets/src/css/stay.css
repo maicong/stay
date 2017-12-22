@@ -1319,6 +1319,7 @@
 .comments .form__reply:after {
   display: none;
 }
+
 .comments .form__text {
   display: flex;
   align-items: stretch;
@@ -1512,8 +1513,6 @@
 .comments .form__text .textarea:focus {
   border-color: #378e81;
 }
-
-
 
 .comments .form__tip {
   font-size: 16px;
