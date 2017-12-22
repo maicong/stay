@@ -104,7 +104,7 @@ const config = {
         test: /\.(gif|png|jpe?g)$/,
         loader: 'url-loader',
         options: {
-          limit: 5120,
+          limit: 3072,
           name: posix.join('img', IS_PROD ? '[name]-[hash:7].[ext]' : '[name]-[hash:7].source.[ext]')
         }
       }

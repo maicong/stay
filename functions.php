@@ -22,15 +22,14 @@ function getFields($post, $key) {
 }
 
 // 获取摘要
-function getExcerpt($content, $length = 300, $trim = ' ......', $return = false) {
-    $content = getContent($content, true);
+function getExcerpt($content, $length = 300, $trim = ' ......') {
+    $content = getContent($content);
     $content = Typecho_Common::subStr(strip_tags($content), 0, $length, $trim);
-    if ($return) return $content;
-    echo $content;
+    return $content;
 }
 
 // 获取内容
-function getContent($content, $return = false) {
+function getContent($content) {
     $options = Typecho_Widget::widget('Widget_Options');
     if ($options->shortcode) {
         $content = preg_replace(
@@ -44,8 +43,7 @@ function getContent($content, $return = false) {
         '<img$1src="' . __LAZYIMG__ . '" data-original="',
         $content
     );
-    if ($return) return $content;
-    echo $content;
+    return $content;
 }
 
 // 获取评论页链接
@@ -87,6 +85,70 @@ function commentsPageLink ($word = '&laquo; Previous Entries', $page = 'prev') {
         }
         $comments->_pageNav->{$page}($word);
     }
+}
+
+// 获取表情
+function getFaces ($type) {
+    $faces = array(
+        'hehe' => '[呵呵]',
+        'haha' => '[哈哈]',
+        'heihei' => '[嘿嘿]',
+        'xixi' => '[嘻嘻]',
+        'xiaoku' => '[笑哭]',
+        'keai' => '[可爱]',
+        'baibai' => '[拜拜]',
+        'wa' => '[哇]',
+        'pu' => '[噗]',
+        'ku' => '[酷]',
+        'nanshou' => '[难受]',
+        'yi' => '[咦]',
+        'emmm' => '[呃]',
+        'heng' => '[哼]',
+        'baiyan' => '[白眼]',
+        'dai' => '[呆]',
+        'cahan' => '[擦汗]',
+        'ganga' => '[尴尬]',
+        'yun' => '[晕]',
+        'jiujie' => '[纠结]',
+        'huaji' => '[滑稽]',
+        'koubi' => '[抠鼻]',
+        'sikao' => '[思考]',
+        'bishi' => '[鄙视]',
+        'tian' => '[舔]',
+        'fendou' => '[奋斗]',
+        'kun' => '[困]',
+        'haixiu' => '[害羞]',
+        'qaq' => '[QAQ]',
+        'doge' => '[Doge]',
+        'laowang' => '[老王]',
+        'zhale' => '[炸了]',
+        'gouyin' => '[勾引]',
+        'niubi' => '[牛逼]',
+        'ruoji' => '[弱鸡]',
+        'woshou' => '[握手]',
+        'gaoci' => '[告辞]',
+        'ok' => '[OK]',
+        'yaowan' => '[药丸]',
+        'pig' => '[猪]'
+    );
+    if ($type === 'map') {
+        return array_map(function ($val) {
+            return "<i class=\"face face-{$val}\"></i>";
+        }, array_flip($faces));
+    }
+    if ($type === 'html') {
+        $html = '';
+        foreach($faces as $key => $val) {
+            $html .= "<i class=\"face face-{$key}\" data-tag=\"{$val}\"></i>";
+        }
+        echo $html;
+    }
+}
+
+// 转换表情
+function convertFaces ($content) {
+    $faces = getFaces('map');
+    return str_replace(array_keys($faces), array_values($faces), $content);
 }
 
 // 获取打包的资源文件
@@ -209,7 +271,7 @@ function threadedComments($comments, $options) {
             </div>
         </div>
         <div id="comment-content" class="comment__content">
-            <?php $comments->content(); ?>
+            <?php echo convertFaces($comments->content); ?>
         </div>
         <?php $comments->reply(); ?>
     </div>

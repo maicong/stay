@@ -44,7 +44,7 @@ $this->need('header.php');
                 </div>
             </header>
             <div class="post__content" itemprop="articleBody">
-                <p class="summary"><?php getExcerpt($this->excerpt); ?></p>
+                <p class="summary"><?php echo getExcerpt($this->excerpt); ?></p>
             </div>
         </article>
         <?php endwhile; ?>

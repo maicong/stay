@@ -16,7 +16,7 @@ $this->need('header.php');
     <div class="container">
         <article class="card post single" itemscope itemtype="http://schema.org/BlogPosting">
             <div id="post-content" class="post__content" itemprop="articleBody">
-                <?php getContent($this->content);?>
+                <?php echo getContent($this->content); ?>
             </div>
             <div class="post__tags" itemprop="keywords"><?php $this->tags(' ', true, ''); ?></div>
         </article>

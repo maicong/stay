@@ -12,8 +12,9 @@
 
 /* 加载 css */
 import '../css/normal'
-import '../css/stay'
 import '../css/prismjs'
+import '../css/face'
+import '../css/stay'
 import './lib/lazyload'
 import './lib/prism'
 
@@ -24,6 +25,7 @@ import fastClick from 'fastclick'
 
 /* 核心代码 */
 $(function () {
+  // 防止重复点击
   fastClick.attach(document.body)
 
   // 检查是否是本站域名
@@ -114,6 +116,7 @@ $(function () {
   var commentIsPosting = false
   $('#comment-form').on('submit', function (e) {
     e.preventDefault()
+    $('#form-face').removeClass('form__face__active')
     const $form = $(this)
     const data = $form.serializeArray()
     const hash = $('[name="respond-hash"]').attr('content')
@@ -306,6 +309,24 @@ $(function () {
         })
       }
     }
+  })
+
+  // 表情
+  $('#form-face-hold').on('click', () => {
+    $('#form-face').toggleClass('form__face__active')
+  })
+  $('#form-face-list').on('click', '.face', function () {
+    const sTag = $(this).data('tag')
+    const $textarea = $('#form-textarea')
+    const tElement = $textarea[0]
+    const tValue = $textarea.val()
+    const tStart = tElement.selectionStart
+    const tEnd = tElement.selectionEnd
+    const rStart = tStart === tEnd ? tStart + sTag.length : tStart
+    const rEnd = tStart + sTag.length
+    $textarea.val(`${tValue.substring(0, tStart)}${sTag}${tValue.substring(tEnd)}`)
+    tElement.setSelectionRange(rStart, rEnd)
+    $textarea.focus()
   })
 
   // 文章伸缩框

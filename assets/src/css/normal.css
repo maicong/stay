@@ -9,9 +9,10 @@
  */
 
 html {
-  font-family: 'San Francisco', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Microsoft YaHei UI', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'Hiragino Sans GB W3', 'WenQuanYi Micro Hei', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", HelveticaNeue-Light, "San Francisco", "Noto Sans", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC", "Source Han Sans CN", "Source Han Sans", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Noto Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 62.5%;
   text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
 body {
@@ -22,6 +23,8 @@ body {
   margin: 0;
   color: #555;
   background-color: #eee;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
 }
 
 article,
@@ -69,7 +72,10 @@ a:after {
   cursor: pointer;
   text-decoration: none;
   background-color: transparent;
-  transition: all 0.2s ease-in-out;
+  transition: all .25s;
+  -webkit-touch-callout: none;
+  -webkit-text-decoration-skip: objects;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a:active,
@@ -202,6 +208,7 @@ textarea {
   outline: 0;
   border-radius: 0;
   -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button,

@@ -16,8 +16,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php if ($this->allow('comment')): ?>
         <form method="post" action="<?php $this->commentUrl(); ?>" id="comment-form" class="form" role="form">
             <div class="form__text">
-                <div id="form-error" class="form__error"></div>
-                <textarea name="text" class="textarea" placeholder="真知灼见，惜字如金 *" tabindex="1"><?php $this->remember('text'); ?></textarea>
+                <div class="form__textarea">
+                    <textarea name="text" id="form-textarea" class="textarea" placeholder="真知灼见，金玉良言 *" tabindex="1"><?php $this->remember('text'); ?></textarea>
+                    <div id="form-face" class="form__face">
+                        <div id="form-face-hold" class="form__face__hold"></div>
+                        <div id="form-face-list" class="form__face__list">
+                            <?php getFaces('html'); ?>
+                        </div>
+                    </div>
+                    <div id="form-error" class="form__error"></div>
+                </div>
                 <button type="submit" class="submit" tabindex="5">发表<br>评论</button>
             </div>
             <?php if ($this->user->hasLogin()): ?>
@@ -42,9 +50,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     </div>
                 <?php endif; ?>
             <?php endif; ?>
-            <div class="form__tip">
-                带符号 * 的表示必填项
-            </div>
+            <div class="form__tip">带符号 * 的表示必填项</div>
         </form>
     <?php else: ?>
         <p class="comment-tip">本页禁止评论，如有疑问请前往 <a href="<?php $this->options->siteUrl('msg'); ?>">留言板</a></p>

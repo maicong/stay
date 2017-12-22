@@ -16,7 +16,7 @@ $this->need('header.php');
     <div class="container">
         <article class="card post single page-<?php $this->slug();?>" itemscope itemtype="http://schema.org/BlogPosting">
             <div id="post-content" class="post__content" itemprop="articleBody">
-                <?php getContent($this->content);?>
+                <?php echo getContent($this->content); ?>
             </div>
         </article>
         <?php $this->need('comments.php'); ?>
