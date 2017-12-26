@@ -5,9 +5,11 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.0.0
+ * @since   1.2.1
  *
  */
+
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 require_once __DIR__ . '/lib/shortcode.php';
 
@@ -151,7 +153,7 @@ function shortcode_audio( $atts, $content = '' ) {
     foreach ( $args as $k => $v ) {
         $attr_strings[] = $k . '="' . htmlspecialchars( $v, ENT_QUOTES, 'UTF-8' ) . '"';
     }
-    return sprintf( '<audio class="mc-audio" %s controls="controls"></audio>', join( ' ', $attr_strings ) );
+    return sprintf( '<audio class="mc-audio" %s controls></audio>', join( ' ', $attr_strings ) );
 }
 add_shortcode( 'audio' , 'shortcode_audio' );
 
@@ -167,7 +169,7 @@ function shortcode_video( $atts, $content = '' ) {
     foreach ( $args as $k => $v ) {
         $attr_strings[] = $k . '="' . htmlspecialchars( $v, ENT_QUOTES, 'UTF-8' ) . '"';
     }
-    return sprintf( '<video class="mc-video" %s controls="controls"></video>', join( ' ', $attr_strings ) );
+    return sprintf( '<video class="mc-video" %s controls></video>', join( ' ', $attr_strings ) );
 }
 add_shortcode( 'video' , 'shortcode_video' );
 
@@ -180,6 +182,56 @@ function shortcode_swf( $atts, $content = '' ) {
     return "<embed src=\"{$content}\" width=\"{$args['width']}\" height=\"{$args['height']}\" type=\"application/x-shockwave-flash\" allowScriptAccess=\"sameDomain\" allowfullscreen=\"true\" wmode=\"opaque\" quality=\"high\" />";
 }
 add_shortcode( 'swf', 'shortcode_swf' );
+
+// 音乐搜索器
+function shortcode_music( $atts, $content = '' ) {
+    /**
+     * [music key="xxx" filter="id" type="netease"]25906124[/music]
+     *
+     * key:    apikey，请联系麦葱获取
+     * filter: 过滤类型
+     *      id         => 音乐ID
+     *      name       => 音乐名称
+     *      url        => 音乐链接
+     * type:   站点类型
+     *      netease    => 网易,
+     *      qq         => ＱＱ,
+     *      kugou      => 酷狗,
+     *      kuwo       => 酷我,
+     *      xiami      => 虾米,
+     *      baidu      => 百度,
+     *      1ting      => 一听,
+     *      migu       => 咪咕,
+     *      lizhi      => 荔枝,
+     *      qingting   => 蜻蜓,
+     *      ximalaya   => 喜马拉雅,
+     *      kg         => 全民K歌,
+     *      5singyc    => 5sing原创,
+     *      5singfc    => 5sing翻唱,
+     *      soundcloud => SoundCloud
+     */
+    $args = shortcode_atts( array(
+        'key' => '',
+        'filter' => 'id',
+        'type' => 'netease',
+        'autoplay' => 'autoplay',
+        'controls' => 'controls'
+    ), $atts );
+    $client = Typecho_Http_Client::get();
+    if ($client) {
+        $client->setHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36')
+        ->setHeader('Referer', Helper::options()->siteUrl)
+        ->setTimeout(10)
+        ->send("http://music.2333.me/api?apikey={$args['key']}&type={$args['type']}&filter={$args['filter']}&query={$content}&result=url");
+        $result = $client->getResponseBody();
+        if ($result) {
+            $data = json_decode($result, true);
+            return sprintf( '<audio class="mc-audio" src="%s" %s %s></audio>', $data['data'], $args['autoplay'], $args['controls']);
+        }
+    }
+    return;
+}
+add_shortcode( 'music', 'shortcode_music' );
 
 // 收缩栏
 function shortcode_toggle( $atts, $content = '' ){
