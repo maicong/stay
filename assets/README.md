@@ -8,6 +8,10 @@
 
 开发前，建议查阅 [Node.js 开发文档][1]、[webpack 中文文档][2]、[ECMAScript 6 features][3]、[Front-End Checklist][4]
 
+## 新手说明
+
+`src` 是源文件目录，`build` 是打包后的文件目录，开发完成后可以只上传或保留 `build` 就行。
+
 ## 特性介绍
 
 - 自动构建
