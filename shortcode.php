@@ -222,7 +222,7 @@ function shortcode_music( $atts, $content = '' ) {
         $client->setHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36')
         ->setHeader('Referer', Helper::options()->siteUrl)
         ->setTimeout(10)
-        ->send("http://music.2333.me/api?apikey={$args['key']}&type={$args['type']}&filter={$args['filter']}&query={$content}&result=url");
+        ->send("http://music.2333.me/api/?apikey={$args['key']}&type={$args['type']}&filter={$args['filter']}&query={$content}&result=url");
         $result = $client->getResponseBody();
         if ($result) {
             $data = json_decode($result, true);
