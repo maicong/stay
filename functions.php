@@ -182,6 +182,17 @@ function buildFile($type) {
 
 // 主题设置
 function themeConfig($form) {
+    Typecho_Widget::widget('Widget_Metas_Category_List')->to($category);
+    foreach($category->stack as $cat) {
+        $listCate[$cat['mid']] = $cat['name'];
+    }
+    $navCategory = new Typecho_Widget_Helper_Form_Element_Checkbox(
+        'navCategory',
+        $listCate,
+        NULL,
+        _t('添加分类到导航'),
+        _t('选择你要添加的分类，可以选择多个')
+    );
     $shortcode = new Typecho_Widget_Helper_Form_Element_Radio(
         'shortcode',
         array(
@@ -244,6 +255,7 @@ function themeConfig($form) {
         _t('统计代码'),
         _t('网站统计代码，隐藏于页脚')
     );
+    $form->addInput($navCategory);
     $form->addInput($shortcode);
     $form->addInput($openDonate);
     $form->addInput($donateTips);

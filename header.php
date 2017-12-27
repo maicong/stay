@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.2.0
+ * @since   1.2.1
  *
  */
 
@@ -103,6 +103,14 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - �
         <?php else: ?>
             <nav class="header__nav" role="navigation">
                 <a<?php if ($this->is('index')): ?> class="on"<?php endif; ?> href="<?php $this->options->siteUrl(); ?>">首页</a>
+                <?php if ($this->options->navCategory): ?>
+                <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
+                <?php while($category->next()): ?>
+                <?php if (in_array($category->mid, $this->options->navCategory)): ?>
+                <a<?php if($this->is('category', $category->slug)): ?> class="on"<?php endif; ?> href="<?php $category->permalink(); ?>"><?php $category->name(); ?></a>
+                <?php endif; ?>
+                <?php endwhile; ?>
+                <?php endif; ?>
                 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                 <?php while($pages->next()): ?>
                 <a<?php if($this->is('page', $pages->slug)): ?> class="on"<?php endif; ?> href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
