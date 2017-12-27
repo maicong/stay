@@ -1067,8 +1067,8 @@
 
 .main .post__donate__btn {
   font-weight: 700;
-  width: 150px;
   height: 36px;
+  padding: 0 15px;
   background: #eee;
   color: #a3a3a3;
   border: 0;
