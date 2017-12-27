@@ -18,6 +18,30 @@ $this->need('header.php');
             <div id="post-content" class="post__content" itemprop="articleBody">
                 <?php echo getContent($this->content); ?>
             </div>
+            <?php if ($this->options->openDonate): ?>
+            <div class="post__donate">
+                <button id="post-donate-btn" class="post__donate__btn">打赏/DONATE</button>
+                <div id="post-donate-list" class="post__donate__list">
+                    <?php if ($this->options->donateTips): ?>
+                    <p class="tips"><?php $this->options->donateTips(); ?></p>
+                    <?php endif; ?>
+                    <div class="qrcode">
+                        <?php if ($this->options->donateWeixin): ?>
+                        <div class="qrcode__item">
+                            <img class="card" src="<?php $this->options->donateWeixin(); ?>" alt="微信">
+                            <p>微信</p>
+                        </div>
+                        <?php endif; ?>
+                        <?php if ($this->options->donateAlipay): ?>
+                        <div class="qrcode__item">
+                            <img class="card" src="<?php $this->options->donateAlipay(); ?>" alt="支付宝">
+                            <p>支付宝</p>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
             <div class="post__tags" itemprop="keywords"><?php $this->tags(' ', true, ''); ?></div>
         </article>
         <section class="near">

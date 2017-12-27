@@ -6,7 +6,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.2.0
+ * @since   1.2.1
  *
  */
 
@@ -342,6 +342,11 @@ $(function () {
     $(this).addClass('active')
     $('.tabs-content').removeClass('active')
     $('#mc-tab-' + index).addClass('active')
+  })
+
+  // 打赏按钮
+  $('#post-donate-btn').on('click', function () {
+    $('#post-donate-list').toggleClass('post__donate__list--active')
   })
 
   // 外链新窗口打开

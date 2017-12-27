@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.2.0
+ * @since   1.2.1
  *
  */
 
@@ -185,6 +185,37 @@ function themeConfig($form) {
         _t('短代码支持'),
         _t('是否启用短代码支持，移植的 WordPress 功能')
     );
+    $openDonate = new Typecho_Widget_Helper_Form_Element_Radio(
+        'openDonate',
+        array(
+            '1' => '开启',
+            '0' => '关闭'
+        ),
+        '0',
+        _t('文章打赏'),
+        _t('是否启用文章打赏功能')
+    );
+    $donateTips = new Typecho_Widget_Helper_Form_Element_Text(
+        'donateTips',
+        NULL,
+        '扫描下面二维码，给我点动力吧~',
+        _t('打赏提示文字'),
+        _t('填入打赏提示文字')
+    );
+    $donateWeixin = new Typecho_Widget_Helper_Form_Element_Text(
+        'donateWeixin',
+        NULL,
+        NULL,
+        _t('微信收款二维码'),
+        _t('填入微信收款二维码地址，尺寸建议 300x300')
+    );
+    $donateAlipay = new Typecho_Widget_Helper_Form_Element_Text(
+        'donateAlipay',
+        NULL,
+        NULL,
+        _t('支付宝收款二维码'),
+        _t('填入支付宝收款二维码地址，尺寸建议 300x300')
+    );
     $gravatarUrl = new Typecho_Widget_Helper_Form_Element_Text(
         'gravatarUrl',
         NULL,
@@ -207,6 +238,10 @@ function themeConfig($form) {
         _t('网站统计代码，隐藏于页脚')
     );
     $form->addInput($shortcode);
+    $form->addInput($openDonate);
+    $form->addInput($donateTips);
+    $form->addInput($donateWeixin);
+    $form->addInput($donateAlipay);
     $form->addInput($gravatarUrl);
     $form->addInput($customHead);
     $form->addInput($analyticsCode);

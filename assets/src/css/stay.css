@@ -4,7 +4,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.2.0
+ * @since   1.2.1
  *
  */
 
@@ -1002,7 +1002,7 @@
 }
 
 .main .post__tags {
-  padding: 2rem 0 1rem;
+  margin-top: 30px;
 }
 
 .main .post__tags:empty {
@@ -1058,6 +1058,60 @@
 
 .main .post__tags a:hover:before {
   background: #009688;
+}
+
+.main .post__donate {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.main .post__donate__btn {
+  font-weight: 700;
+  width: 150px;
+  height: 36px;
+  background: #eee;
+  color: #a3a3a3;
+  border: 0;
+  text-shadow: 0 0 2px rgba(255, 255, 255, .65);
+  cursor: pointer;
+  transition: color .25s, background .25s;
+  user-select: none;
+}
+.main .post__donate__btn:hover,
+.main .post__donate__btn:active {
+  background: #fbd562;
+  color: #d7471e;
+}
+
+.main .post__donate__list {
+  height: 0;
+  margin-top: 15px;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity .25s, transform .2s;
+}
+
+.main .post__donate__list--active {
+  height: auto;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.main .post__donate__list .tips {
+  font-weight: 700;
+}
+
+.main .post__donate__list .qrcode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.main .post__donate__list .qrcode__item  {
+  margin: 0 6px;
+  color: #999;
 }
 
 .main .post__more {
