@@ -225,14 +225,14 @@ function themeConfig($form) {
         NULL,
         NULL,
         _t('微信收款二维码'),
-        _t('填入微信收款二维码地址，尺寸建议 300x300')
+        _t('填入微信收款二维码地址，建议保持一致尺寸，例如 200x200')
     );
     $donateAlipay = new Typecho_Widget_Helper_Form_Element_Text(
         'donateAlipay',
         NULL,
         NULL,
         _t('支付宝收款二维码'),
-        _t('填入支付宝收款二维码地址，尺寸建议 300x300')
+        _t('填入支付宝收款二维码地址，建议保持一致尺寸，例如 200x200')
     );
     $gravatarUrl = new Typecho_Widget_Helper_Form_Element_Text(
         'gravatarUrl',
