@@ -151,6 +151,13 @@ function convertFaces ($content) {
     return str_replace(array_keys($faces), array_values($faces), $content);
 }
 
+// 转换链接
+function convertComment ($content) {
+    $content = convertFaces($content);
+    $content = preg_replace('/(https?:\/\/[a-zA-Z0-9\/\-.=#?&%]+)/iu', '<a href="$1">$1</a>',$content);
+    return $content;
+}
+
 // 获取打包的资源文件
 function buildFile($type) {
     $file = __DIR__.'/assets/build/manifest.php';
@@ -306,7 +313,7 @@ function threadedComments($comments, $options) {
             </div>
         </div>
         <div id="comment-content" class="comment__content">
-            <?php echo convertFaces($comments->content); ?>
+            <?php echo convertComment($comments->content); ?>
         </div>
         <?php $comments->reply(); ?>
     </div>
