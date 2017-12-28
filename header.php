@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.3.0
+ * @since   1.3.1
  *
  */
 
@@ -21,7 +21,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - �
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?php $this->archiveTitle(array(
             'category'  =>  _t('%s'),
-            'search'    =>  _t('关键字: %s'),
+            'search'    =>  _t('搜索: %s'),
             'tag'       =>  _t('标签: %s'),
             'author'    =>  _t('作者: %s')
         ), '', ' - '); ?><?php $this->options->title(); ?><?php echo $page_title; ?></title>
@@ -82,7 +82,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - �
             <?php elseif ($this->is('archive')): ?>
                 <?php $this->archiveTitle(array(
                     'category'  =>  _t('%s'),
-                    'search'    =>  _t('关键字: %s'),
+                    'search'    =>  _t('搜索: %s'),
                     'tag'       =>  _t('标签: %s'),
                     'author'    =>  _t('作者: %s')
                 ), '', ''); ?>
@@ -118,7 +118,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - �
             </nav>
         <?php endif; ?>
         <?php if (!$this->is('index')): ?>
-            <a class="header__back" href="<?php $this->options->siteUrl(); ?>" title="回到首页"></a>
+        <a class="header__back" href="<?php $this->options->siteUrl(); ?>" title="回到首页"></a>
         <?php endif; ?>
     </div>
 </header>
