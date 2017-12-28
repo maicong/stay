@@ -4,7 +4,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.3.0
+ * @since   1.3.1
  *
  */
 
@@ -19,7 +19,7 @@
 }
 
 .header {
-  padding: 8rem 0;
+  padding: 96px 0;
   text-align: center;
   background: #4a9c90 url(../img/bg_header.jpg) 50%;
   background-size: cover;
@@ -141,57 +141,37 @@
 
 .header .header__back {
   position: absolute;
-  z-index: 999;
-  bottom: 1.2rem;
+  z-index: 2;
+  bottom: 12px;
   left: 0;
   right: 0;
-  width: 3rem;
-  height: 3rem;
-  font-size: 0;
-  margin: auto;
-}
-
-.header .header__back:before,
-.header .header__back:after {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 3rem;
-  line-height: 3rem;
-  margin: auto;
-  font-size: 16px;
-  overflow: hidden;
-}
-
-.header .header__back:before {
-  z-index: 1;
-  content: '';
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  font-weight: 700;
+  margin: 0 auto;
+  color: #429083;
   background: #fff;
   border: 2px solid #429083;
   border-radius: 50%;
-  box-sizing: border-box;
+  transform: rotateZ(0) scale(1);
 }
 
-.header .header__back:after {
+.header .header__back:before {
+  position: absolute;
+  content: "←";
+  width: 100%;
+  height: 100%;
+  top: 0;
   left: 0;
-  right: 0;
-  z-index: 2;
-  content: 'M';
-  color: #429083;
 }
 
-.header .header__back:active:before,
-.header .header__back:hover:before {
-  left: -36px;
-  right: -36px;
-  border-radius: 5px;
-}
-
-.header .header__back:active:after,
-.header .header__back:hover:after {
-  left: -36px;
-  right: -36px;
-  content: attr(title);
+.header .header__back:hover,
+.header .header__back:active {
+  color: #fff;
+  background: #429083;
+  box-shadow: inset 0 0 0 2px #fff;
+  transform: rotateZ(-360deg) scale(1.3);
 }
 
 .main {
@@ -200,7 +180,7 @@
 
 @media screen and (max-width: 1024px) {
   .main {
-    margin: -2.5rem 0 8rem;
+    margin: -30px 0 8rem;
   }
 }
 
@@ -229,7 +209,7 @@
 
 .main .post {
   position: relative;
-  padding: 2.5rem;
+  padding: 30px;
   margin: 4rem 0 8rem;
   background: #fff;
 }
@@ -267,7 +247,7 @@
 
 @media screen and (max-width: 680px) {
   .main .post:after {
-    bottom: -2.5rem;
+    bottom: -30px;
   }
 }
 
@@ -390,7 +370,7 @@
     font-size: 1.2rem;
   }
   .main .post__title {
-    font-size: 2.5rem;
+    font-size: 30px;
   }
 }
 
@@ -907,7 +887,7 @@
   bottom: 0;
   font-size: 1.66667rem;
   height: 2.33333rem;
-  line-height: 2.5rem;
+  line-height: 30px;
   margin: auto;
 }
 
@@ -1208,7 +1188,7 @@
 }
 
 .comments {
-  padding: 2.5rem;
+  padding: 30px;
   background: #fff;
 }
 
@@ -1606,8 +1586,8 @@
   position: fixed;
   right: 2rem;
   bottom: 4.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 30px;
+  height: 30px;
   background: #ccc;
   cursor: pointer;
   overflow: hidden;
@@ -1626,7 +1606,7 @@
   height: 100%;
   background-image: url(../img/bg_beaker.png);
   background-repeat: repeat-x;
-  background-position: 0 2.5rem;
+  background-position: 0 30px;
   background-size: cover;
   animation: beaker 2s infinite linear;
 }
