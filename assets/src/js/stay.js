@@ -6,7 +6,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.3.0
+ * @since   1.3.1
  *
  */
 
@@ -78,7 +78,7 @@ $(function () {
       $('#__newpage').remove()
       $.get(link, r => {
         if (r) {
-          const title = $(r)[5].innerText
+          const title = Array.from($(r)).find(v => $(v)[0].tagName === 'TITLE')
           switch (type) {
             case 'posts':
               const posts = $(r)
@@ -87,7 +87,7 @@ $(function () {
               if (posts) {
                 $('#post-list').append(posts)
                 $load.remove()
-                document.title = title
+                document.title = $(title).text()
                 pushState(title, link)
                 imgLazyLoad('.post__thumb img')
                 $('#__newpage').length && animateScrollTo($('#__newpage').offset().top)
@@ -100,7 +100,7 @@ $(function () {
               if (comments) {
                 $('#comment-list').append(comments)
                 $load.remove()
-                document.title = title
+                document.title = $(title).text()
                 pushState(title, link)
                 imgLazyLoad('.comments .avatar')
                 $('#__newpage').length && animateScrollTo($('#__newpage').offset().top)
