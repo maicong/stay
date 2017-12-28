@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.3.0
+ * @since   1.3.2
  *
  */
 
@@ -147,7 +147,8 @@ add_shortcode( 'btnvideo' , 'shortcode_button_video' );
 function shortcode_audio( $atts, $content = '' ) {
     $args = shortcode_atts( array(
         'src'      => '',
-        'preload'  => 'metadata'
+        'preload'  => 'metadata',
+        'autoplay'  => 'autoplay'
     ), $atts );
     $attr_strings = array();
     foreach ( $args as $k => $v ) {
@@ -162,6 +163,7 @@ function shortcode_video( $atts, $content = '' ) {
     $args = shortcode_atts( array(
         'src'      => '',
         'preload'  => 'metadata',
+        'autoplay'  => 'autoplay',
         'width'    => 640,
         'height'   => 360,
     ), $atts );
@@ -178,6 +180,7 @@ function shortcode_swf( $atts, $content = '' ) {
     $args = shortcode_atts( array(
         'width' => '500',
         'height' => '300',
+        'autoplay'  => 'autoplay',
     ), $atts );
     return "<embed src=\"{$content}\" width=\"{$args['width']}\" height=\"{$args['height']}\" type=\"application/x-shockwave-flash\" allowScriptAccess=\"sameDomain\" allowfullscreen=\"true\" wmode=\"opaque\" quality=\"high\" />";
 }

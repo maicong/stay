@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.3.1
+ * @since   1.3.2
  *
  */
 
@@ -26,7 +26,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - ç¬
             'author'    =>  _t('ä½œè€…: %s')
         ), '', ' - '); ?><?php $this->options->title(); ?><?php echo $page_title; ?></title>
     <meta name="keywords" content="<?php _e($this->_keywords); ?>">
-    <meta name="description" content="<?php echo getExcerpt($this->description); ?>">
+    <meta name="description" content="<?php echo getExcerpt($this->content, 200); ?>">
     <meta name="author" content="MaiCong (maicong.me)">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
@@ -41,7 +41,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - ç¬
     <meta property="og:type" content="blog">
     <meta property="og:title" content="<?php $this->title(); ?> - <?php $this->options->title(); ?>">
     <meta property="og:url" content="<?php $this->permalink(); ?>">
-    <meta property="og:description" content="<?php echo getExcerpt($this->description); ?>">
+    <meta property="og:description" content="<?php echo getExcerpt($this->content, 200); ?>">
     <meta property="og:author" content="<?php $this->author(); ?>">
     <meta property="og:image" content="<?php echo getFields($this, 'thumbnail'); ?>">
     <meta property="og:release_date" content="<?php $this->date('c'); ?>">
@@ -49,7 +49,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - ç¬
     <meta property="article:author" content="<?php $this->author(); ?>">
     <meta property="article:published_first" content="<?php $this->permalink(); ?>">
     <meta itemprop="name" content="<?php $this->title(); ?> - <?php $this->options->title(); ?>">
-    <meta itemprop="description" content="<?php echo getExcerpt($this->description); ?>">
+    <meta itemprop="description" content="<?php echo getExcerpt($this->content, 200); ?>">
     <meta itemprop="image" content="<?php echo getFields($this, 'thumbnail'); ?>">
     <meta itemprop="url" content="<?php $this->permalink(); ?>">
     <link rel="canonical" href="<?php $this->permalink(); ?>">
