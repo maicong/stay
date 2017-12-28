@@ -25,7 +25,7 @@ function getFields($post, $key) {
 function getExcerpt($content, $length = 300, $trim = ' ......') {
     $content = getContent($content);
     $content = Typecho_Common::subStr(strip_tags($content), 0, $length, $trim);
-    return $content;
+    return trim($content);
 }
 
 // 获取内容
