@@ -317,7 +317,7 @@ function threadedComments($comments, $options) {
     <div id="<?php $comments->theId(); ?>" class="comment-block">
         <div class="comment__vcard">
             <div class="comment__avatar">
-                <?php $comments->gravatar(80, 'retro', true); ?>
+                <?php $comments->gravatar(84, 'retro', true); ?>
             </div>
             <div class="comment__meta">
                 <cite class="comment__author"><?php $comments->author(); ?><?php echo $user_type; ?></cite>

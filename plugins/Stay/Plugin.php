@@ -344,7 +344,7 @@ class Stay_Plugin implements Typecho_Plugin_Interface
 
         $time = date($dateFormat, $created);
         $content = Typecho_Common::stripTags($text, '<p><br>' . $allowTag);
-        $avatar = Typecho_Common::gravatarUrl($email, 80, 'G', 'retro');
+        $avatar = Typecho_Common::gravatarUrl($email, 84, 'G', 'retro');
 
         return array(
             'author' => $author,
