@@ -1316,6 +1316,10 @@
   padding: 1rem 0 1rem 5rem;
 }
 
+.comments .comment__content a {
+  text-decoration: underline;
+}
+
 .comments .comment__content .face {
   display: inline-block;
   vertical-align: top;

@@ -24,7 +24,6 @@ body {
   color: #555;
   background-color: #eee;
   -webkit-tap-highlight-color: transparent;
-  -webkit-font-smoothing: antialiased;
 }
 
 article,
@@ -100,7 +99,7 @@ p {
   display: block;
   margin: 0;
   word-wrap: break-word;
-  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 dfn {
