@@ -648,6 +648,51 @@
   text-decoration: underline;
 }
 
+.main .post__content .protected {
+  text-align: center;
+}
+
+.main .post__content .protected p {
+  margin: 0;
+}
+
+.main .post__content .protected .word {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.main .post__content .protected .text  {
+  height: 42px;
+  line-height: 42px;
+  padding: 0 9px;
+  margin-right: -4px;
+  border: 2px solid #429083;
+  border-right: 0;
+  box-sizing: border-box;
+}
+
+.main .post__content .protected .text::placeholder {
+  color: #999;
+}
+
+.main .post__content .protected .submit {
+  height: 42px;
+  line-height: 42px;
+  padding: 0 15px;
+  color: #fff;
+  background: #429083;
+  border: 0;
+  transition: background .25s;
+}
+
+.main .post__content .protected .submit:hover {
+  background: #2da591;
+}
+
+.main .post__content .protected .submit:active {
+  background: #316f65;
+}
+
 .main .post__content .aligncenter {
   display: block;
   margin: 0 auto 2rem;
