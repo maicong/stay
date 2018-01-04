@@ -49,9 +49,9 @@ $this->need('header.php');
         </article>
         <?php endwhile; ?>
         <?php else: ?>
-            <article class="post no-post">
-                <h2 class="post-title">没有相关内容或内容已隐藏</h2>
-            </article>
+        <article class="card post no-post">
+            <h2 class="post-title">此页文章还在娘胎中，请等候些许时日</h2>
+        </article>
         <?php endif; ?>
         <section id="load__more" class="post__more" data-type="posts">
             <?php $this->pageLink('加载更多', 'next'); ?>

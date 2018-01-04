@@ -16,6 +16,7 @@ $this->need('header.php');
         <?php if ($this->_currentPage > 1): ?>
             <div id="__newpage"></div>
         <?php endif; ?>
+        <?php if ($this->have()): ?>
         <?php while($this->next()): ?>
         <article class="card post" itemscope itemtype="http://schema.org/BlogPosting">
             <header class="card post__header<?php if (!getFields($this, 'thumbnail')): ?> post__no__thumb<?php endif; ?>">
@@ -46,6 +47,11 @@ $this->need('header.php');
             </div>
         </article>
         <?php endwhile; ?>
+        <?php else: ?>
+        <article class="card post no-post">
+            <h2 class="post-title">此页文章还在娘胎中，请等候些许时日</h2>
+        </article>
+        <?php endif; ?>
         <section id="load__more" class="post__more" data-type="posts">
             <?php $this->pageLink('加载更多', 'next'); ?>
         </section>
