@@ -1,6 +1,9 @@
 <?php
 /**
  * 麦葱以 Typecho 为平台打造的一款响应式主题
+ * 　
+ * <b>最新版本: </b>
+ * <a href="https://github.com/maicong/stay/releases"><img src="https://img.shields.io/github/release/maicong/stay.svg?style=flat-square"></a>
  *
  * @package Stay
  * @author MaiCong
