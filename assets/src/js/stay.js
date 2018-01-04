@@ -46,9 +46,9 @@ $(function () {
     return decodeURIComponent(results[2].replace(/\+/g, ' '))
   }
 
-  // 是否是 iOS
-  const isiOS = () => {
-    return /(iPad|iPhone|iPod)/g.test(navigator.userAgent)
+  // 是否是 Mobile
+  const isMobile = () => {
+    return /(iPad|iPhone|iPod|Android|webOS|Mobile)/g.test(navigator.userAgent)
   }
 
   // 加入历史记录
@@ -137,7 +137,7 @@ $(function () {
       time = $.isNumeric(name) ? name : time
       $err.removeClass('form__error__show __success __info __warning')
       const __show = () => {
-        if (!$.isNumeric(name) && !isiOS()) {
+        if (!$.isNumeric(name) && !isMobile()) {
           $form.find('[name="' + name + '"]').focus()
         }
         $form.find('.submit').prop('disabled', true)
@@ -302,7 +302,7 @@ $(function () {
         $reply.text('取消回复').addClass('cancel__reply')
         animateScrollTo($reply.parent().offset().top, {
           onComplete () {
-            if (!isiOS()) {
+            if (!isMobile()) {
               $form.find('[name="text"]').focus()
             }
           }
@@ -326,7 +326,9 @@ $(function () {
     const rEnd = tStart + sTag.length
     $textarea.val(`${tValue.substring(0, tStart)}${sTag}${tValue.substring(tEnd)}`)
     tElement.setSelectionRange(rStart, rEnd)
-    $textarea.focus()
+    if (!isMobile()) {
+      $textarea.focus()
+    }
   })
 
   // 文章伸缩框
