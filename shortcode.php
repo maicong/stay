@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.3.2
+ * @since   1.4.0
  *
  */
 
@@ -220,12 +220,18 @@ function shortcode_music( $atts, $content = '' ) {
         'autoplay' => 'autoplay',
         'controls' => 'controls'
     ), $atts );
-    $client = Typecho_Http_Client::get();
-    if ($client) {
-        $client->setHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36')
+    if ($client = Typecho_Http_Client::get()) {
+        $client->setHeader('User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.39 Safari/537.36')
         ->setHeader('Referer', Helper::options()->siteUrl)
         ->setTimeout(10)
-        ->send("http://music.2333.me/api/?apikey={$args['key']}&type={$args['type']}&filter={$args['filter']}&query={$content}&result=url");
+        ->setQuery(array(
+            'apikey' => $args['key'],
+            'type' => $args['type'],
+            'filter' => $content,
+            'query' => $args['key'],
+            'result' => 'url'
+        ))
+        ->send("http://music.2333.me/api/");
         $result = $client->getResponseBody();
         if ($result) {
             $data = json_decode($result, true);
