@@ -146,10 +146,12 @@ add_shortcode( 'btnvideo' , 'shortcode_button_video' );
 // 音频播放
 function shortcode_audio( $atts, $content = '' ) {
     $args = shortcode_atts( array(
-        'src'      => '',
-        'preload'  => 'metadata',
-        'autoplay'  => 'autoplay'
+        'src' => '',
+        'preload' => 'metadata'
     ), $atts );
+    if (!empty($atts['autoplay'])) {
+        $args['autoplay'] = 'autoplay';
+    }
     $attr_strings = array();
     foreach ( $args as $k => $v ) {
         $attr_strings[] = $k . '="' . htmlspecialchars( $v, ENT_QUOTES, 'UTF-8' ) . '"';
@@ -163,10 +165,12 @@ function shortcode_video( $atts, $content = '' ) {
     $args = shortcode_atts( array(
         'src'      => '',
         'preload'  => 'metadata',
-        'autoplay'  => 'autoplay',
         'width'    => 640,
         'height'   => 360,
     ), $atts );
+    if (!empty($atts['autoplay'])) {
+        $args['autoplay'] = 'autoplay';
+    }
     $attr_strings = array();
     foreach ( $args as $k => $v ) {
         $attr_strings[] = $k . '="' . htmlspecialchars( $v, ENT_QUOTES, 'UTF-8' ) . '"';
@@ -179,8 +183,7 @@ add_shortcode( 'video' , 'shortcode_video' );
 function shortcode_swf( $atts, $content = '' ) {
     $args = shortcode_atts( array(
         'width' => '500',
-        'height' => '300',
-        'autoplay'  => 'autoplay',
+        'height' => '300'
     ), $atts );
     return "<embed src=\"{$content}\" width=\"{$args['width']}\" height=\"{$args['height']}\" type=\"application/x-shockwave-flash\" allowScriptAccess=\"sameDomain\" allowfullscreen=\"true\" wmode=\"opaque\" quality=\"high\" />";
 }
@@ -216,10 +219,14 @@ function shortcode_music( $atts, $content = '' ) {
     $args = shortcode_atts( array(
         'key' => '',
         'filter' => 'id',
-        'type' => 'netease',
-        'autoplay' => 'autoplay',
-        'controls' => 'controls'
+        'type' => 'netease'
     ), $atts );
+    if (!empty($atts['autoplay'])) {
+        $args['autoplay'] = 'autoplay';
+    }
+    if (!empty($atts['controls'])) {
+        $args['controls'] = 'controls';
+    }
     if ($client = Typecho_Http_Client::get()) {
         $client->setHeader('User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.39 Safari/537.36')
         ->setHeader('Referer', Helper::options()->siteUrl)
