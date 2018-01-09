@@ -11,8 +11,6 @@
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-define('__QINIU__', 'https://ocwuzqizg.qnssl.com/');
-
 define('__LAZYIMG__', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2P8+vXrfwAJpgPg8gE+iwAAAABJRU5ErkJggg==');
 
 // 主题设置
@@ -193,28 +191,6 @@ function themeFields($layout) {
     $layout->addItem($thumbnail);
 }
 
-function qiniu_file($file = '') {
-    return __QINIU__ . $file;
-}
-
-function icons_url($icon = '') {
-    return __QINIU__ . 'static/img/icons/'.$icon;
-}
-
-function getThumbnail($post, $thumbnail = false) {
-    if ($post->thumbnail) {
-        $src = __QINIU__ . $post->thumbnail;
-        if ($thumbnail) {
-            $src = $src . '!thumbnail.jpg';
-        }
-    } else {
-        $src = getFields($post, 'thumbnail');
-    }
-    if ($src) {
-        return $src;
-    }
-}
-
 // 获取自定义字段
 function getFields($post, $key) {
     $value = $post->fields->{$key};
@@ -258,12 +234,10 @@ function getBuildFile($type) {
         $manifest = new WebpackManifest();
         switch ($type) {
             case 'css':
-                // $options->themeUrl($manifest::$cssFiles[0]);
-                echo __QINIU__ . $manifest::$cssFiles[0];
+                $options->themeUrl($manifest::$cssFiles[0]);
             break;
             case 'js':
-                // $options->themeUrl($manifest::$jsFiles[0]);
-                echo __QINIU__ . $manifest::$jsFiles[0];
+                $options->themeUrl($manifest::$jsFiles[0]);
             break;
         }
     } else {
@@ -468,12 +442,8 @@ function threadedComments($comments, $options) {
         }
     }
     switch ($comments->authorId) {
-        case '1000':
+        case '1':
             $user_type = '<i class="identity">博主</i>';
-            break;
-        case '1001':
-        case '1002':
-            $user_type = '<i class="identity">特邀</i>';
             break;
         default:
             if ('waiting' == $comments->status) {
