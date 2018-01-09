@@ -407,8 +407,8 @@ $(function () {
     $text.text('转换中, 请稍后...')
     $.get('', { do: 'getSpeech' }, r => {
       speechIsGet = false
-      if (!r || !r.data) {
-        $text.text('转换失败')
+      if (!r || !r.data || !Array.isArray(r.data)) {
+        $text.text('转换失败，点击重试')
         return
       }
       r.data.forEach(v => {
