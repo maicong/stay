@@ -373,8 +373,8 @@ $(function () {
     img.src = $(this).data('original')
     img.onload = () => {
       if (
-        img.width > $('#post-content').width() * 2 / 3 &&
-        img.height > img.width * 1 / 3
+        img.width >= $('#post-content').width() * (2 / 3) &&
+        img.height >= img.width * (1 / 3)
       ) {
         $(this).addClass('card aligncenter')
       }
