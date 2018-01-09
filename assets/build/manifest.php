@@ -5,10 +5,10 @@
 */
 class WebpackManifest {
   static $jsFiles = [
-    'assets/build/stay-175a834.min.js',
+    'assets/build/stay-07608dc.min.js',
   ];
   static $cssFiles = [
-    'assets/build/stay-78bb75e.min.css',
+    'assets/build/stay-43040b9.min.css',
   ];
 
 }
