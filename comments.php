@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.2.0
+ * @since   1.4.0
  *
  */
 
@@ -62,7 +62,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <?php endif; ?>
             <?php $comments->listComments(); ?>
             <section id="load__more" class="post__more" data-type="comments">
-                <?php commentsPageLink('加载更多', 'next'); ?>
+                <?php getCommentsPage('加载更多', 'next'); ?>
             </section>
         <?php endif; ?>
         </div>

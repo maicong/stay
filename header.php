@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.3.2
+ * @since   1.4.0
  *
  */
 
@@ -54,7 +54,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - ç¬
     <meta itemprop="url" content="<?php $this->permalink(); ?>">
     <link rel="canonical" href="<?php $this->permalink(); ?>">
 <?php endif; ?>
-    <link rel="stylesheet" href="<?php buildFile('css'); ?>">
+    <link rel="stylesheet" href="<?php getBuildFile('css'); ?>">
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php _e($this->_feedUrl); ?>">
     <link rel="alternate" type="application/rdf+xml" title="RSS 1.0" href="<?php _e($this->_feedRssUrl); ?>">
     <link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="<?php _e($this->_feedAtomUrl); ?>">
