@@ -6,7 +6,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.3.4
+ * @since   1.4.0
  *
  */
 
@@ -65,6 +65,14 @@ $(function () {
       placeholder_data_img:
         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2P8+vXrfwAJpgPg8gE+iwAAAABJRU5ErkJggg=='
     })
+  }
+
+  // 转换秒为分钟
+  const sec2minute = sec => {
+    return [
+      parseInt(sec / 60 % 60),
+      parseInt(sec % 60)
+    ].join(':').replace(/\b(\d)\b/g, '0$1')
   }
 
   // Ajax 翻页
@@ -371,6 +379,76 @@ $(function () {
         $(this).addClass('card aligncenter')
       }
     }
+  })
+
+  // 文章语音朗读
+  let speechList = []
+  let speechIndex = 0
+  let speechIsGet = false
+  $('#post-text2speech').on('click', function () {
+    if (speechIsGet) return
+    const $self = $(this)
+    const $text = $('#post-text2speech-text')
+    const $time = $('#post-text2speech-time')
+    const $progress = $('#post-text2speech-progress')
+    let currentTime = 0
+    let duration = 0
+
+    if (speechList.length) {
+      const speech = speechList[speechIndex]
+      if (!speech.paused) {
+        speech.pause()
+      } else {
+        speech.play()
+      }
+      return
+    }
+    speechIsGet = true
+    $text.text('转换中, 请稍后...')
+    $.get('', { do: 'getSpeech' }, r => {
+      speechIsGet = false
+      if (!r || !r.data) {
+        $text.text('转换失败')
+        return
+      }
+      r.data.forEach(v => {
+        const speech = new window.Audio(v)
+        speech.preload = 'metadata'
+        speechList.push(speech)
+        $(speech).on('play', () => {
+          $text.text('正在朗读...')
+          $self.addClass('isPlaying')
+        })
+        $(speech).on('pause', () => {
+          $text.text('已暂停朗读')
+          $self.removeClass('isPlaying')
+        })
+        $(speech).on('loadedmetadata', () => {
+          duration = duration + speech.duration
+          $time.text(`00:00 / ${sec2minute(duration)}`)
+        })
+        $(speech).on('timeupdate', () => {
+          const nowTime = currentTime + speech.currentTime
+          $progress.css('width', (nowTime / duration * 100).toFixed(2) + '%')
+          $time.text(`${sec2minute(nowTime)} / ${sec2minute(duration)}`)
+        })
+        $(speech).on('ended', () => {
+          currentTime += speech.duration
+          if (speechIndex >= speechList.length - 1) {
+            speechIndex = 0
+            currentTime = 0
+            $text.text('点击重新朗读')
+          } else {
+            speechIndex += 1
+            speechList[speechIndex].play()
+          }
+        })
+        $(speech).on('error', () => {
+          $text.text('转换失败')
+        })
+      })
+      speechList[0].play()
+    })
   })
 
   // 返回顶部

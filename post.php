@@ -5,16 +5,31 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.3.0
+ * @since   1.4.0
  *
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+
+if ($this->request->isAjax() && $this->request->is('do=getSpeech')) {
+    $this->response->throwJson([
+        'data' => text2speech($this->cid)
+    ]);
+}
+
 $this->need('header.php');
 ?>
 <main class="main" role="main">
     <div class="container">
         <article class="card post single" itemscope itemtype="http://schema.org/BlogPosting">
+            <?php if ($this->options->text2speech): ?>
+            <div id="post-text2speech" class="post__text2speech">
+                <i class="icon"></i>
+                <span id="post-text2speech-text" class="text">转换为语音并朗读全文</span>
+                <span id="post-text2speech-time" class="time">00:00 / 00:00</span>
+                <span id="post-text2speech-progress" class="progress"></span>
+            </div>
+            <?php endif; ?>
             <div id="post-content" class="post__content" itemprop="articleBody">
                 <?php echo getContent($this->content); ?>
             </div>
