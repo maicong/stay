@@ -11,6 +11,7 @@
   - [自定义设置](#自定义设置)
   - [开启评论分页](#开启评论分页)
   - [更换头部背景图](#更换头部背景图)
+  - [百度BDUSS](#百度BDUSS)
 - [预览图](#预览图)
 
 ## 使用说明
@@ -103,6 +104,18 @@
 ### 更换头部背景图
 
 选择一张比较大的图片，替换掉 `assets/src/img/` 目录下的 `bg_header.jpg` 即可。
+
+## 百度BDUSS
+
+1. 前往 [passport.baidu.com](https://passport.baidu.com/)
+2. 使用 Chrome 登录后右键点击 `审查元素` 或 `检查`
+3. 切换到 `Application`
+4. 点开左侧目录的 `Cookies` 并选中 `https://passport.baidu.com`
+5. 找到 `BDUSS` 对应的 Value，双击后复制
+
+如图位置：
+
+![百度BDUSS](http://ww4.sinaimg.cn/large/0060lm7Tly1fnak8p8pjgj30uj0fjwhf.jpg)
 
 ## 预览图
 
