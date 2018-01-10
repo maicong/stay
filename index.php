@@ -7,7 +7,7 @@
  *
  * @package Stay
  * @author MaiCong
- * @version 1.4.0
+ * @version 1.4.1
  * @link http://maicong.me
  */
 
