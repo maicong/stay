@@ -49,8 +49,10 @@ function themeConfig($form) {
     $text2speechSex = new Typecho_Widget_Helper_Form_Element_Radio(
         'text2speechSex',
         array(
-            '3' => '男声',
-            '4' => '女声',
+            '1' => '普通男声',
+            '0' => '普通女声',
+            '3' => '情感男声',
+            '4' => '情感女声'
         ),
         '3',
         _t('语音朗读合成类型'),
@@ -59,9 +61,11 @@ function themeConfig($form) {
     $text2speechSpeed = new Typecho_Widget_Helper_Form_Element_Radio(
         'text2speechSpeed',
         array(
+            '1' => '超慢',
             '3' => '慢速',
             '5' => '正常',
             '7' => '快速',
+            '12' => '超快'
         ),
         '5',
         _t('语音朗读语速'),
@@ -93,7 +97,7 @@ function themeConfig($form) {
         NULL,
         NULL,
         _t('百度 BDUSS'),
-        _t('百度 Cookie 中的 BDUSS，获取方法请看 <a href="https://github.com/maicong/stay/blob/master/README.md#%E7%99%BE%E5%BA%A6BDUSS">README.md</a>')
+        _t('百度 Cookie 中的 BDUSS，获取方法请看 <a href="https://github.com/maicong/stay/blob/master/README.md#%E7%99%BE%E5%BA%A6bduss">README.md</a>')
     );
     $openDonate = new Typecho_Widget_Helper_Form_Element_Radio(
         'openDonate',
@@ -372,9 +376,9 @@ function getSpeech ($title, $content) {
         ->setData(array(
             'title' => $title,
             'content' => $content,
-            'sex' => $options->text2speechSex ? $options->text2speechSex : 4,
+            'sex' => $options->text2speechSex >= 0 ? $options->text2speechSex : 4,
             'speed' => $options->text2speechSpeed ? $options->text2speechSpeed : 5,
-            'volumn' => 6,
+            'volumn' => 9,
             'pit' => 5,
             'method' => 'TRADIONAL'
         ))
@@ -403,7 +407,7 @@ function text2speech ($cid) {
     $content = strip_tags(do_shortcode($post->content));
     $content = str_replace("</p><p>", "。", $content);
     $content = str_replace(
-        array('“', '”', '"', '\'', '@', '#', '%', '&', '—', '…', '*'),
+        array('“', '”', '"', '\'', '@', '#', '%', '&', '——', '…', '*'),
         ' ',
         $content
     );
