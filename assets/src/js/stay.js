@@ -403,24 +403,27 @@ $(function () {
       }
       return
     }
+
     speechIsGet = true
-    $text.text('转换中, 请稍后...')
+    $text.text('正在转换, 请稍后...')
+
     $.get('', { do: 'getSpeech' }, r => {
       speechIsGet = false
       if (!r || !r.data || !Array.isArray(r.data)) {
-        $text.text('转换失败，点击重试')
+        $text.text('转换失败, 点击重试')
         return
       }
       r.data.forEach(v => {
         const speech = new window.Audio(v)
         speech.preload = 'metadata'
         speechList.push(speech)
+
         $(speech).on('play', () => {
           $text.text('正在朗读...')
           $self.addClass('isPlaying')
         })
         $(speech).on('pause', () => {
-          $text.text('已暂停朗读')
+          $text.text('朗读已暂停')
           $self.removeClass('isPlaying')
         })
         $(speech).on('loadedmetadata', () => {
@@ -444,10 +447,15 @@ $(function () {
           }
         })
         $(speech).on('error', () => {
-          $text.text('转换失败')
+          $text.text('语音资源加载失败')
         })
       })
-      speechList[0].play()
+
+      if (isMobile()) {
+        $text.text('转换成功, 点击朗读')
+      } else {
+        speechList[0].play()
+      }
     })
   })
 
