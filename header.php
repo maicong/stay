@@ -26,7 +26,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - �
             'author'    =>  _t('作者: %s')
         ), '', ' - '); ?><?php $this->options->title(); ?><?php echo $page_title; ?></title>
     <meta name="keywords" content="<?php _e($this->_keywords); ?>">
-    <meta name="description" content="<?php echo getExcerpt($this->content, 200); ?>">
+    <meta name="description" content="<?php echo $this->is('index') ? $this->options->description : getExcerpt($this->content, 200); ?>">
     <meta name="author" content="MaiCong (maicong.me)">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
