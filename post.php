@@ -5,12 +5,13 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.4.0
+ * @since   1.4.2
  *
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
+// 获取音频地址
 if ($this->request->isAjax() && $this->request->is('do=getSpeech')) {
     $this->response->throwJson([
         'data' => text2speech($this->cid)
