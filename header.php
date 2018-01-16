@@ -11,7 +11,7 @@
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-// 返回 QQ 昵称
+// 返回 QQ 信息
 if (
     $this->allow('comment') &&
     $this->request->isAjax() &&

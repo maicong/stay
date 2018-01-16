@@ -399,7 +399,7 @@ function mcFetch ($args = array()) {
     }
 }
 
-// 获取 QQ 昵称
+// 获取 QQ 信息
 function getQQInfo ($qq) {
     $result = mcFetch(array(
         'method' => 'GET',
