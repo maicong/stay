@@ -6,7 +6,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.4.0
+ * @since   1.4.2
  *
  */
 
@@ -268,6 +268,32 @@ $(function () {
       .parent()
       .remove()
     $('#form-user').removeClass('form__user__hide')
+  })
+
+  // 匹配 QQ 信息
+  let inputTimer, inputTimeStamp, inputIsSend
+  $('#form-user input[name="author"]').on('input', function (e) {
+    inputTimeStamp = e.timeStamp
+    const value = $(this).val()
+    if (!/^\d{5,11}$/.test(value)) {
+      return
+    }
+    if (inputTimer) {
+      clearTimeout(inputTimer)
+    }
+    inputTimer = setTimeout(() => {
+      if (inputIsSend || inputTimeStamp - e.timeStamp || !parseInt(value)) {
+        return
+      }
+      inputIsSend = true
+      $.get('', { do: 'getQQInfo', qq: value }, r => {
+        inputIsSend = false
+        if (r && r.data) {
+          $(this).val(r.data.nick)
+          $('#form-user input[name="mail"]').val(r.data.mail)
+        }
+      })
+    }, 1000)
   })
 
   // 回复评论

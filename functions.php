@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.4.1
+ * @since   1.4.2
  *
  */
 
@@ -349,31 +349,93 @@ function getCommentsPage ($word = '&laquo; Previous Entries', $page = 'prev') {
     }
 }
 
-// 转换表情
-function convertFaces ($content) {
-    $faces = getFaces('map');
-    return str_replace(array_keys($faces), array_values($faces), $content);
+// jsonp 转 json
+function jsonp2json($jsonp) {
+    if ($jsonp[0] !== '[' && $jsonp[0] !== '{') {
+        $jsonp = mb_substr($jsonp, mb_strpos($jsonp, '('));
+    }
+    $json = trim($jsonp, "();");
+    if ($json) {
+        return json_decode($json, true);
+    }
 }
 
-// 转换评论内容
-function convertComments ($content) {
-    $content = convertFaces($content);
-    // 匹配链接
-    $content = preg_replace('/(https?:\/\/[a-zA-Z0-9\/\-.=#?&%]+)/iu', '<a href="$1">$1</a>',$content);
-    return $content;
+// Http 请求
+function mcFetch ($args = array()) {
+    $args = array_merge(array(
+        'method' => 'GET',
+        'url' => null,
+        'header' => array(),
+        'data' => array()
+    ), $args);
+
+    $args['header'] = array_merge(array(
+        'Referer' => 'https://www.google.co.uk',
+        'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.39 Safari/537.36'
+    ), $args['header']);
+
+    if (!$args['url']) {
+        return;
+    }
+
+    if ($client = Typecho_Http_Client::get()) {
+        if (!empty($args['header'])) {
+            foreach($args['header'] as $key => $val) {
+                $client->setHeader($key, $val);
+            }
+        }
+        if (!empty($args['data'])) {
+            if ($args['method'] === 'GET') {
+                $client->setQuery($args['data']);
+            }
+            if ($args['method'] === 'POST') {
+                $client->setData($args['data']);
+            }
+        }
+        $client->setTimeout(15);
+        $client->send($args['url']);
+
+        return $client->getResponseBody();
+    }
+}
+
+// 获取 QQ 昵称
+function getQQInfo ($qq) {
+    $result = mcFetch(array(
+        'method' => 'GET',
+        'url' => 'http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg',
+        'header' => array(
+            'Referer' => 'http://users.qzone.qq.com'
+        ),
+        'data' => array(
+            'uins' => $qq
+        )
+    ));
+    if ($result) {
+        $result = mb_convert_encoding($result, 'UTF-8', 'GB2312,GBK');
+        $result = jsonp2json($result);
+        if ($result && $result[$qq]) {
+            return array(
+                'nick' => trim($result[$qq][6]) ?: 'QQ用户',
+                'mail' => "{$qq}@qq.com"
+            );
+        }
+    }
 }
 
 // 获取音频地址
 function getSpeech ($title, $content) {
     $options = Typecho_Widget::widget('Widget_Options');
-    if ($client = Typecho_Http_Client::get()) {
-        $client->setHeader('User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.39 Safari/537.36')
-        ->setHeader('Referer', 'http://developer.baidu.com/vcast')
-        ->setHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
-        ->setHeader('X-Requested-With', 'XMLHttpRequest')
-        ->setHeader('Cookie', 'BDUSS=' . $options->baiduBDUSS)
-        ->setTimeout(15)
-        ->setData(array(
+    $result = mcFetch(array(
+        'method' => 'POST',
+        'url' => 'http://developer.baidu.com/vcast/getVcastInfo',
+        'header' => array(
+            'Referer' => 'http://developer.baidu.com/vcast',
+            'Content-Type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+            'X-Requested-With' => 'XMLHttpRequest',
+            'Cookie' => 'BDUSS=' . $options->baiduBDUSS
+        ),
+        'data' => array(
             'title' => $title,
             'content' => $content,
             'sex' => $options->text2speechSex >= 0 ? $options->text2speechSex : 4,
@@ -381,11 +443,11 @@ function getSpeech ($title, $content) {
             'volumn' => 9,
             'pit' => 5,
             'method' => 'TRADIONAL'
-        ))
-        ->send("http://developer.baidu.com/vcast/getVcastInfo");
-        $result = json_decode($client->getResponseBody());
-        if ($result) {
-            return $result->bosUrl;
+        )
+    ));
+    if ($data = json_decode($result)) {
+        if ($data) {
+            return $data->bosUrl;
         }
     }
 }
@@ -432,6 +494,20 @@ function text2speech ($cid) {
         $speech[] = getSpeech($title, $val);
     }
     return $speech;
+}
+
+// 转换表情
+function convertFaces ($content) {
+    $faces = getFaces('map');
+    return str_replace(array_keys($faces), array_values($faces), $content);
+}
+
+// 转换评论内容
+function convertComments ($content) {
+    $content = convertFaces($content);
+    // 匹配链接
+    $content = preg_replace('/(https?:\/\/[a-zA-Z0-9\/\-.=#?&%]+)/iu', '<a href="$1">$1</a>',$content);
+    return $content;
 }
 
 // 评论层
