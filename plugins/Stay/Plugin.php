@@ -207,27 +207,13 @@ class Stay_Plugin implements Typecho_Plugin_Interface
     {
         $lazyImg = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2P8+vXrfwAJpgPg8gE+iwAAAABJRU5ErkJggg==';
 
-        $url = Typecho_Common::gravatarUrl(
-            $self->mail, $size, $rating, $default, $self->request->isSecure()
-        );
-
         preg_match('/^(\d{5,11})@qq\.com$/', $self->mail, $match);
-        if (!empty($match) && function_exists('mcFetch') && function_exists('jsonp2json')) {
-            $result = mcFetch(array(
-                'method' => 'GET',
-                'url' => 'https://ptlogin2.qq.com/getface',
-                'header' => array(
-                    'Referer' => 'http://w.qq.com'
-                ),
-                'data' => array(
-                    'imgtype' => 3,
-                    'uin' => $match[1]
-                )
-            ));
-            $data = jsonp2json($result);
-            if ($data && $data[$match[1]]) {
-                $url = $data[$match[1]];
-            }
+        if (!empty($match)) {
+            $url = "https://q.qlogo.cn/g?b=qq&nk={$match[1]}&s=100";
+        } else {
+            $url = Typecho_Common::gravatarUrl(
+                $self->mail, $size, $rating, $default, $self->request->isSecure()
+            );
         }
 
         echo '<img class="avatar" src="'. $lazyImg . '" data-original="' . $url . '" alt="' . $self->author . '" width="' . $size . '" height="' . $size . '" />';
