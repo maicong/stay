@@ -8,7 +8,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
  *
  * @package Stay
  * @author MaiCong
- * @version 1.0.0
+ * @version 1.1.0
  * @link https://maicong.me
  */
 
@@ -206,7 +206,30 @@ class Stay_Plugin implements Typecho_Plugin_Interface
     public static function gravatar($size, $rating, $default, $self)
     {
         $lazyImg = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2P8+vXrfwAJpgPg8gE+iwAAAABJRU5ErkJggg==';
-        $url = Typecho_Common::gravatarUrl($self->mail, $size, $rating, $default, $self->request->isSecure());
+
+        $url = Typecho_Common::gravatarUrl(
+            $self->mail, $size, $rating, $default, $self->request->isSecure()
+        );
+
+        preg_match('/^(\d{5,11})@qq\.com$/', $self->mail, $match);
+        if (!empty($match) && function_exists('mcFetch') && function_exists('jsonp2json')) {
+            $result = mcFetch(array(
+                'method' => 'GET',
+                'url' => 'https://ptlogin2.qq.com/getface',
+                'header' => array(
+                    'Referer' => 'http://w.qq.com'
+                ),
+                'data' => array(
+                    'imgtype' => 3,
+                    'uin' => $match[1]
+                )
+            ));
+            $data = jsonp2json($result);
+            if ($data && $data[$match[1]]) {
+                $url = $data[$match[1]];
+            }
+        }
+
         echo '<img class="avatar" src="'. $lazyImg . '" data-original="' . $url . '" alt="' . $self->author . '" width="' . $size . '" height="' . $size . '" />';
     }
 
