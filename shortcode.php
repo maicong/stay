@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.4.0
+ * @since   1.4.2
  *
  */
 
@@ -188,66 +188,6 @@ function shortcode_swf( $atts, $content = '' ) {
     return "<embed src=\"{$content}\" width=\"{$args['width']}\" height=\"{$args['height']}\" type=\"application/x-shockwave-flash\" allowScriptAccess=\"sameDomain\" allowfullscreen=\"true\" wmode=\"opaque\" quality=\"high\" />";
 }
 add_shortcode( 'swf', 'shortcode_swf' );
-
-// 音乐搜索器
-function shortcode_music( $atts, $content = '' ) {
-    /**
-     * [music key="xxx" filter="id" type="netease"]25906124[/music]
-     *
-     * key:    apikey，请联系麦葱获取
-     * filter: 过滤类型
-     *      id         => 音乐ID
-     *      name       => 音乐名称
-     *      url        => 音乐链接
-     * type:   站点类型
-     *      netease    => 网易,
-     *      qq         => ＱＱ,
-     *      kugou      => 酷狗,
-     *      kuwo       => 酷我,
-     *      xiami      => 虾米,
-     *      baidu      => 百度,
-     *      1ting      => 一听,
-     *      migu       => 咪咕,
-     *      lizhi      => 荔枝,
-     *      qingting   => 蜻蜓,
-     *      ximalaya   => 喜马拉雅,
-     *      kg         => 全民K歌,
-     *      5singyc    => 5sing原创,
-     *      5singfc    => 5sing翻唱,
-     *      soundcloud => SoundCloud
-     */
-    $args = shortcode_atts( array(
-        'key' => '',
-        'filter' => 'id',
-        'type' => 'netease'
-    ), $atts );
-    if (!empty($atts['autoplay'])) {
-        $args['autoplay'] = 'autoplay';
-    }
-    if (!empty($atts['controls'])) {
-        $args['controls'] = 'controls';
-    }
-    if ($client = Typecho_Http_Client::get()) {
-        $client->setHeader('User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.39 Safari/537.36')
-        ->setHeader('Referer', Helper::options()->siteUrl)
-        ->setTimeout(10)
-        ->setQuery(array(
-            'apikey' => $args['key'],
-            'type' => $args['type'],
-            'filter' => $content,
-            'query' => $args['key'],
-            'result' => 'url'
-        ))
-        ->send("http://music.2333.me/api/");
-        $result = $client->getResponseBody();
-        if ($result) {
-            $data = json_decode($result, true);
-            return sprintf( '<audio class="mc-audio" src="%s" %s %s></audio>', $data['data'], $args['autoplay'], $args['controls']);
-        }
-    }
-    return;
-}
-add_shortcode( 'music', 'shortcode_music' );
 
 // 收缩栏
 function shortcode_toggle( $atts, $content = '' ){
