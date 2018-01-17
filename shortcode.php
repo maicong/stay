@@ -147,10 +147,13 @@ add_shortcode( 'btnvideo' , 'shortcode_button_video' );
 function shortcode_audio( $atts, $content = '' ) {
     $args = shortcode_atts( array(
         'src' => '',
-        'preload' => 'metadata'
+        'preload' => 'metadata',
     ), $atts );
     if (!empty($atts['autoplay'])) {
         $args['autoplay'] = 'autoplay';
+    }
+    if (!empty($atts['loop'])) {
+        $args['loop'] = 'loop';
     }
     $attr_strings = array();
     foreach ( $args as $k => $v ) {
@@ -170,6 +173,9 @@ function shortcode_video( $atts, $content = '' ) {
     ), $atts );
     if (!empty($atts['autoplay'])) {
         $args['autoplay'] = 'autoplay';
+    }
+    if (!empty($atts['loop'])) {
+        $args['loop'] = 'loop';
     }
     $attr_strings = array();
     foreach ( $args as $k => $v ) {
