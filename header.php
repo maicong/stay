@@ -37,8 +37,8 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - ç¬
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="respond-hash" content="<?php echo $this->security->getToken($this->request->getRequestUrl()); ?>">
 <?php if ($this->is('post')): ?>
-    <meta property="og:site_name" content="maicong.me">
     <meta property="og:type" content="blog">
+    <meta property="og:site_name" content="<?php echo parse_url($this->options->siteUrl)['host']; ?>">
     <meta property="og:title" content="<?php $this->title(); ?> - <?php $this->options->title(); ?>">
     <meta property="og:url" content="<?php $this->permalink(); ?>">
     <meta property="og:description" content="<?php echo getExcerpt($this->content, 200); ?>">
