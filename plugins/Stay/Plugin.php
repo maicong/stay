@@ -392,8 +392,6 @@ class Stay_Plugin implements Typecho_Plugin_Interface
         $sign = file_get_contents(__DIR__ . "/assets/sign.html");
 
         if ($options['sign']) {
-            $token = hash_hmac('sha1', $data['email'], $data['time'] . 'MC_2016');
-            $base64mail = base64_encode($data['email']);
             $options['sign'] = $sign;
         }
 
@@ -438,7 +436,7 @@ class Stay_Plugin implements Typecho_Plugin_Interface
         $Mailer->isSMTP();
         $Mailer->isHTML(true);
         $Mailer->SMTPAuth = true;
-        $Mailer->SMTPDebug = 2;
+        $Mailer->SMTPDebug = 0;
         $Mailer->Debugoutput = 'error_log';
 		$Mailer->SMTPSecure = 'ssl';
         $Mailer->XMailer = 'mcMailer';
