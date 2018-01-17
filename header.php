@@ -5,23 +5,11 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.4.2
+ * @since   1.4.3
  *
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-
-// 返回 QQ 信息
-if (
-    $this->allow('comment') &&
-    $this->request->isAjax() &&
-    $this->request->is('do=getQQInfo')
-) {
-    $qq = $this->request->get('qq');
-    $this->response->throwJson([
-        'data' => getQQInfo($qq)
-    ]);
-}
 
 // 页码
 $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - 第 %s 页', $this->_currentPage) : ($this->parameter->type === 'comment_page' ? sprintf(' - 评论第 %s 页', $this->request->commentPage) : '');

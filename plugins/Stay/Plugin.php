@@ -8,7 +8,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
  *
  * @package Stay
  * @author MaiCong
- * @version 1.1.0
+ * @version 1.1.1
  * @link https://maicong.me
  */
 
@@ -207,14 +207,9 @@ class Stay_Plugin implements Typecho_Plugin_Interface
     {
         $lazyImg = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2P8+vXrfwAJpgPg8gE+iwAAAABJRU5ErkJggg==';
 
-        preg_match('/^(\d{5,11})@qq\.com$/', $self->mail, $match);
-        if (!empty($match)) {
-            $url = "https://q.qlogo.cn/g?b=qq&nk={$match[1]}&s=100";
-        } else {
-            $url = Typecho_Common::gravatarUrl(
-                $self->mail, $size, $rating, $default, $self->request->isSecure()
-            );
-        }
+        $url = Typecho_Common::gravatarUrl(
+            $self->mail, $size, $rating, $default, $self->request->isSecure()
+        );
 
         echo '<img class="avatar" src="'. $lazyImg . '" data-original="' . $url . '" alt="' . $self->author . '" width="' . $size . '" height="' . $size . '" />';
     }

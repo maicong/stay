@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.4.2
+ * @since   1.4.3
  *
  */
 
@@ -349,17 +349,6 @@ function getCommentsPage ($word = '&laquo; Previous Entries', $page = 'prev') {
     }
 }
 
-// jsonp 转 json
-function jsonp2json($jsonp) {
-    if ($jsonp[0] !== '[' && $jsonp[0] !== '{') {
-        $jsonp = mb_substr($jsonp, mb_strpos($jsonp, '('));
-    }
-    $json = trim($jsonp, "();");
-    if ($json) {
-        return json_decode($json, true);
-    }
-}
-
 // Http 请求
 function mcFetch ($args = array()) {
     $args = array_merge(array(
@@ -396,30 +385,6 @@ function mcFetch ($args = array()) {
         $client->send($args['url']);
 
         return $client->getResponseBody();
-    }
-}
-
-// 获取 QQ 信息
-function getQQInfo ($qq) {
-    $result = mcFetch(array(
-        'method' => 'GET',
-        'url' => 'http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg',
-        'header' => array(
-            'Referer' => 'http://users.qzone.qq.com'
-        ),
-        'data' => array(
-            'uins' => $qq
-        )
-    ));
-    if ($result) {
-        $result = mb_convert_encoding($result, 'UTF-8', 'GB2312,GBK');
-        $result = jsonp2json($result);
-        if ($result && $result[$qq]) {
-            return array(
-                'nick' => trim($result[$qq][6]) ?: 'QQ用户',
-                'mail' => "{$qq}@qq.com"
-            );
-        }
     }
 }
 

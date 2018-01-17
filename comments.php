@@ -35,7 +35,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <?php else: ?>
                 <div id="form-user" class="form__user<?php if ($this->remember('author', true)): ?> form__user__hide<?php endif; ?>">
                     <div class="form__input">
-                        <input type="text" name="author" class="text" placeholder="昵称/QQ *" value="<?php $this->remember('author'); ?>" tabindex="2">
+                        <input type="text" name="author" class="text" placeholder="昵称 *" value="<?php $this->remember('author'); ?>" tabindex="2">
                     </div>
                     <div class="form__input form__clear">
                         <input type="email" name="mail" class="text" placeholder="邮箱 *" value="<?php $this->remember('mail'); ?>" tabindex="3">
@@ -48,8 +48,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <div class="form__tip">
                         将以 <a href="<?php $this->remember('url'); ?>" rel="external nofollow" target="_blank"><?php $this->remember('author'); ?></a> 的身份发表评论. <a id="form-user-edit" href="###" title="更改身份信息">更改</a>
                     </div>
-                <?php else: ?>
-                    <div class="form__tip">当昵称为 QQ 时将自动匹配对应昵称和邮箱</div>
                 <?php endif; ?>
             <?php endif; ?>
             <div class="form__tip">带符号 * 的表示必填项</div>
