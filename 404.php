@@ -15,8 +15,11 @@ $this->need('header.php');
 <main class="main">
     <div class="container">
         <div class="card page__404">
-            <h2 class="not__title">404</h2>
-            <p class="not__content">没错，你要查看的页面被我吃了</p>
+            <h2 class="post-title">404 - <?php _e('页面没找到'); ?></h2>
+            <form method="post">
+                <p><input type="text" name="s" class="text" autofocus /></p>
+                <p><button type="submit" class="submit"><?php _e('搜索'); ?></button></p>
+            </form>
         </div>
     </div>
 </main>
