@@ -62,7 +62,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - ç¬
     <?php $this->options->customHead(); ?>
     <?php endif; ?>
 </head>
-<body>
+<body<?php if ($this->options->siteStyle): echo " class=\"stay-{$this->options->siteStyle}\""; endif; ?>>
 <!--[if lte IE 9]>
     <script type="text/javascript">
         document.body.innerHTML='';
