@@ -137,22 +137,23 @@ if (IS_PROD) {
   config.devtool = false
   config.plugins = config.plugins.concat([
     new UglifyJsPlugin({
+      cache: true,
       parallel: true,
+      sourceMap: false,
+      extractComments: false,
       uglifyOptions: {
-        /* eslint camelcase: 0 */
+        ie8: false,
+        ecma: 5,
         mangle: true,
-        beautify: false,
-        comments: false,
         sourceMap: false,
         compress: {
-          unsafe: true,
           warnings: false,
           drop_console: true,
           drop_debugger: true
         },
         output: {
-          ascii_only: true,
-          comments: false
+          comments: false,
+          ascii_only: true
         }
       }
     }),
@@ -161,7 +162,6 @@ if (IS_PROD) {
 } else {
   config.plugins = config.plugins.concat([
     new Webpack.HashedModuleIdsPlugin(),
-    new Webpack.NoEmitOnErrorsPlugin(),
     new WriteFilePlugin()
   ])
 }
