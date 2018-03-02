@@ -86,7 +86,12 @@ $(function () {
       $('#__newpage').remove()
       $.get(link, r => {
         if (r) {
-          const title = Array.from($(r)).find(v => $(v)[0].tagName === 'TITLE')
+          const title = Array.from($(r))
+            .find(v => $(v)[0].tagName === 'TITLE')
+            .textContent
+          const hash = Array.from($(r))
+            .find(v => $(v)[0].name === 'respond-hash')
+            .content
           switch (type) {
             case 'posts':
               const posts = $(r)
@@ -94,9 +99,10 @@ $(function () {
                 .html()
               if (posts) {
                 $('#post-list').append(posts)
+                $('[name="respond-hash"]').attr('content', hash)
                 $load.remove()
-                document.title = $(title).text()
-                pushState(title, link)
+                document.title = title
+                pushState($(title).text(), link)
                 imgLazyLoad('.post__thumb img')
                 $('#__newpage').length && animateScrollTo($('#__newpage').offset().top)
               }
@@ -107,8 +113,9 @@ $(function () {
                 .html()
               if (comments) {
                 $('#comment-list').append(comments)
+                $('[name="respond-hash"]').attr('content', hash)
                 $load.remove()
-                document.title = $(title).text()
+                document.title = title
                 pushState(title, link)
                 imgLazyLoad('.comments .avatar')
                 $('#__newpage').length && animateScrollTo($('#__newpage').offset().top)
