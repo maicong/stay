@@ -74,7 +74,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - ç¬
     </script>
 <![endif]-->
 
-<header class="header">
+<header class="header" <?php if ($this->options->headBgUrl): echo "style=\"background-image:url({$this->options->headBgUrl})\""; endif; ?>>
     <div class="container" itemscope itemtype="http://schema.org/BlogPosting">
         <h1 class="header__title" itemprop="name headline">
             <?php if ($this->is('index')): ?>
