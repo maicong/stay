@@ -16,6 +16,7 @@ define('__LAZYIMG__', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAY
 // 主题设置
 function themeConfig($form) {
     Typecho_Widget::widget('Widget_Metas_Category_List')->to($category);
+    $listCate = [];
     foreach($category->stack as $cat) {
         $listCate[$cat['mid']] = $cat['name'];
     }
@@ -35,6 +36,13 @@ function themeConfig($form) {
         '0',
         _t('短代码支持'),
         _t('是否启用短代码支持，移植的 WordPress 功能')
+    );
+    $headBgUrl = new Typecho_Widget_Helper_Form_Element_Text(
+        'headBgUrl',
+        NULL,
+        NULL,
+        _t('页头背景图'),
+        _t('填入有效的图片地址，可以为本地或远程 URL')
     );
     $text2speech = new Typecho_Widget_Helper_Form_Element_Radio(
         'text2speech',
@@ -142,7 +150,7 @@ function themeConfig($form) {
         NULL,
         NULL,
         _t('自定义头部信息'),
-        _t('HTML 代码，可以是 meta 或者 link 等')
+        _t('HTML 代码，可以是 meta 或 link 等')
     );
     $analyticsCode = new Typecho_Widget_Helper_Form_Element_Textarea(
         'analyticsCode',
@@ -153,6 +161,7 @@ function themeConfig($form) {
     );
     $form->addInput($navCategory);
     $form->addInput($shortcode);
+    $form->addInput($headBgUrl);
     $form->addInput($text2speech);
     $form->addInput($text2speechSex);
     $form->addInput($text2speechSpeed);
