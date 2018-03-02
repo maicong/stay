@@ -169,6 +169,13 @@ function themeConfig($form) {
         _t('自定义头部信息'),
         _t('HTML 代码，可以是 meta 或 link 等')
     );
+    $customFoot = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'customFoot',
+        NULL,
+        NULL,
+        _t('自定义页脚代码'),
+        _t('HTML 代码，显示于页脚版权信息下一行')
+    );
     $analyticsCode = new Typecho_Widget_Helper_Form_Element_Textarea(
         'analyticsCode',
         NULL,
@@ -193,6 +200,7 @@ function themeConfig($form) {
     $form->addInput($donateAlipay);
     $form->addInput($gravatarUrl);
     $form->addInput($customHead);
+    $form->addInput($customFoot);
     $form->addInput($analyticsCode);
 }
 
