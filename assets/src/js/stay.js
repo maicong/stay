@@ -102,7 +102,7 @@ $(function () {
                 $('[name="respond-hash"]').attr('content', hash)
                 $load.remove()
                 document.title = title
-                pushState($(title).text(), link)
+                pushState(title, link)
                 imgLazyLoad('.post__thumb img')
                 $('#__newpage').length && animateScrollTo($('#__newpage').offset().top)
               }
