@@ -241,15 +241,11 @@ function getExcerpt($content, $length = 300, $trim = ' ......') {
 function getContent($content) {
     $options = Typecho_Widget::widget('Widget_Options');
     if ($options->shortcode) {
-        $content = preg_replace(
-            '/<p>(<div(.+?)<\/div>)<\/p>/',
-            '$1',
-            do_shortcode($content)
-        );
+        $content = do_shortcode($content);
     }
     $content = preg_replace(
-        '/<img(.+?)src="/',
-        '<img$1src="' . __LAZYIMG__ . '" data-original="',
+        ['/<p>(<div(.+?)<\/div>)<\/p>/', '/<img(.+?)src="/'],
+        ['$1', '<img$1src="' . __LAZYIMG__ . '" data-original="'],
         $content
     );
     return $content;
@@ -458,7 +454,11 @@ function mb_str_split($str, $length = 1) {
 function text2speech ($cid) {
     Typecho_Widget::widget('Widget_Archive', 'type=post&cid=' . $cid)->to($post);
     $options = Typecho_Widget::widget('Widget_Options');
-    $content = strip_tags(do_shortcode($post->content));
+    $content = $post->content;
+    if ($options->shortcode) {
+        $content = do_shortcode($content);
+    }
+    $content = strip_tags($content);
     $content = str_replace("</p><p>", "。", $content);
     $content = str_replace(
         array('“', '”', '"', '\'', '@', '#', '%', '&', '——', '…', '*'),
