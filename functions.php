@@ -269,10 +269,10 @@ function getBuildFile($type) {
         $manifest = new WebpackManifest();
         switch ($type) {
             case 'css':
-                $options->themeUrl($manifest::$cssFiles[0]);
+                $options->themeUrl($manifest::$cssFiles['stay']);
             break;
             case 'js':
-                $options->themeUrl($manifest::$jsFiles[0]);
+                $options->themeUrl($manifest::$jsFiles['stay']);
             break;
         }
     } else {
