@@ -37,23 +37,23 @@ function themeConfig($form) {
         _t('短代码支持'),
         _t('是否启用短代码支持，移植的 WordPress 功能')
     );
-    $siteStyle = new Typecho_Widget_Helper_Form_Element_Radio(
-        'siteStyle',
-        array(
-            'purple' => '沉稳紫',
-            'green' => '清新绿',
-            'pink' => '俏皮粉',
-            'red' => '喜庆红',
-            'yellow' => '灿烂黄',
-            'blue' => '未来蓝',
-            'black' => '暗夜黑',
-            'white' => '冰雪白',
-            'color' => '斑斓彩'
-        ),
-        'purple',
-        _t('网站风格'),
-        _t('不同的风格不同的态度')
-    );
+    // $siteStyle = new Typecho_Widget_Helper_Form_Element_Radio(
+    //     'siteStyle',
+    //     array(
+    //         'purple' => '沉稳紫',
+    //         'green' => '清新绿',
+    //         'pink' => '俏皮粉',
+    //         'red' => '喜庆红',
+    //         'yellow' => '灿烂黄',
+    //         'blue' => '未来蓝',
+    //         'black' => '暗夜黑',
+    //         'white' => '冰雪白',
+    //         'color' => '斑斓彩'
+    //     ),
+    //     'purple',
+    //     _t('网站风格'),
+    //     _t('不同的风格不同的态度')
+    // );
     $headBgUrl = new Typecho_Widget_Helper_Form_Element_Text(
         'headBgUrl',
         NULL,
@@ -185,7 +185,7 @@ function themeConfig($form) {
     );
     $form->addInput($navCategory);
     $form->addInput($shortcode);
-    $form->addInput($siteStyle);
+    // $form->addInput($siteStyle);
     $form->addInput($headBgUrl);
     $form->addInput($text2speech);
     $form->addInput($text2speechSex);
