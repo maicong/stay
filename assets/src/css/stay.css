@@ -1669,17 +1669,21 @@
 
 .footer .container {
   position: relative;
-}
-
-.footer .footer__copyright {
-  border-top: 1PX solid #ddd;
   padding: 1.5rem;
-  font-size: 1.3rem;
-  color: #bbb;
-  text-align: center;
+  border-top: 1PX solid #ddd;
 }
 
-.footer .footer__copyright a {
+.footer .footer__item {
+  font-size: 1.3rem;
+  text-align: center;
+  color: #bbb;
+}
+
+.footer .footer__item + .footer__item {
+  margin-top: 6px;
+}
+
+.footer .footer__item a {
   text-decoration: underline;
 }
 
