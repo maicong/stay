@@ -10,7 +10,7 @@
 
 html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", HelveticaNeue-Light, "San Francisco", "Noto Sans", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC", "Source Han Sans CN", "Source Han Sans", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Noto Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 62.5%;
+  font-size: 10PX;
   text-size-adjust: 100%;
   touch-action: manipulation;
 }
