@@ -1671,6 +1671,7 @@
   position: relative;
   padding: 1.5rem;
   border-top: 1PX solid #ddd;
+  box-sizing: border-box;
 }
 
 .footer .footer__item {
