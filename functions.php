@@ -41,14 +41,14 @@ function themeConfig($form) {
     //     'siteStyle',
     //     array(
     //         'purple' => '沉稳紫',
-    //         'green' => '清新绿',
-    //         'pink' => '俏皮粉',
-    //         'red' => '喜庆红',
+    //         'green'  => '清新绿',
+    //         'pink'   => '俏皮粉',
+    //         'red'    => '喜庆红',
     //         'yellow' => '灿烂黄',
-    //         'blue' => '未来蓝',
-    //         'black' => '暗夜黑',
-    //         'white' => '冰雪白',
-    //         'color' => '斑斓彩'
+    //         'blue'   => '未来蓝',
+    //         'black'  => '暗夜黑',
+    //         'white'  => '冰雪白',
+    //         'color'  => '斑斓彩'
     //     ),
     //     'purple',
     //     _t('网站风格'),
