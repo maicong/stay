@@ -14,6 +14,7 @@
   - [百度BDUSS](#百度bduss)
   - [搜索页](#搜索页)
 - [预览图](#预览图)
+- [如何更新](#如何更新)
 
 ## 使用说明
 
@@ -148,6 +149,19 @@
 评论
 
 ![评论](https://ww1.sinaimg.cn/large/0060lm7Tly1fmmmcslxq2j31kw10y7cg.jpg)
+
+## 如何更新
+
+简单来说就两步：`取得新版 -> 覆盖旧版`
+
+1. 前往 [Releases](https://github.com/maicong/stay/releases) 取得最新版本
+2. 将最新版本的代码覆盖旧代码
+
+主题文件在 `usr/themes/stay` 目录, 插件文件放在 `usr/plugins/Stay` 目录 (插件目录名首字母为大写)
+
+如果你对代码有进行过修改，可以使用 [Beyond Compare](https://www.scootersoftware.com/download.php) 这类对比工具查看差异处，在不影响使用的情况下，保留你修改的代码，替换其余代码为最新版。
+
+后台设置是存入数据库的，在禁用再启用前，建议备份一下设置信息。
 
 ## 使用协议
 
