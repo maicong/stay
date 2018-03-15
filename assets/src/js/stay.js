@@ -139,6 +139,7 @@ $(function () {
     const isValid = []
     let isPost = false
     let action = $form.attr('action')
+    const _hash = getParam(action, '_')
     const showMsg = (msg, type, name, time, cb) => {
       const $err = $('#form-error')
       const types = ['success', 'info', 'warning']
@@ -191,10 +192,12 @@ $(function () {
         }, 220)
       }
     }
-    if (action.indexOf('?') > -1) {
-      action = action + '&_=' + hash
-    } else {
-      action = action + '?_=' + hash
+    if (!_hash || _hash !== hash) {
+      if (action.indexOf('?') > -1) {
+        action = action + '&_=' + hash
+      } else {
+        action = action + '?_=' + hash
+      }
     }
     $.each(data, (i, field) => {
       const msgs = {
