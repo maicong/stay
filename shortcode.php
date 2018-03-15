@@ -159,7 +159,7 @@ function shortcode_audio( $atts, $content = '' ) {
     foreach ( $args as $k => $v ) {
         $attr_strings[] = $k . '="' . htmlspecialchars( $v, ENT_QUOTES, 'UTF-8' ) . '"';
     }
-    return sprintf( '<audio class="mc-audio" %s controls></audio>', join( ' ', $attr_strings ) );
+    return sprintf( '<audio class="mc-audio" %s controls>%s</audio>', join( ' ', $attr_strings ), $content );
 }
 add_shortcode( 'audio' , 'shortcode_audio' );
 
@@ -167,9 +167,7 @@ add_shortcode( 'audio' , 'shortcode_audio' );
 function shortcode_video( $atts, $content = '' ) {
     $args = shortcode_atts( array(
         'src'      => '',
-        'preload'  => 'metadata',
-        'width'    => 640,
-        'height'   => 360,
+        'preload'  => 'metadata'
     ), $atts );
     if (!empty($atts['autoplay'])) {
         $args['autoplay'] = 'autoplay';
@@ -177,21 +175,33 @@ function shortcode_video( $atts, $content = '' ) {
     if (!empty($atts['loop'])) {
         $args['loop'] = 'loop';
     }
+    if (!empty($atts['width'])) {
+        $args['width'] = $atts['width'];
+    }
+    if (!empty($atts['height'])) {
+        $args['height'] = $atts['height'];
+    }
     $attr_strings = array();
     foreach ( $args as $k => $v ) {
         $attr_strings[] = $k . '="' . htmlspecialchars( $v, ENT_QUOTES, 'UTF-8' ) . '"';
     }
-    return sprintf( '<video class="mc-video" %s controls></video>', join( ' ', $attr_strings ) );
+    return sprintf( '<video class="mc-video" %s controls>%s</video>', join( ' ', $attr_strings ), $content );
 }
 add_shortcode( 'video' , 'shortcode_video' );
 
 // SWF播放器
 function shortcode_swf( $atts, $content = '' ) {
     $args = shortcode_atts( array(
-        'width' => '500',
-        'height' => '300'
+        'allowScriptAccess' => 'sameDomain',
+        'allowfullscreen' => 'true',
+        'wmode' => 'opaque',
+        'quality' => 'high'
     ), $atts );
-    return "<embed src=\"{$content}\" width=\"{$args['width']}\" height=\"{$args['height']}\" type=\"application/x-shockwave-flash\" allowScriptAccess=\"sameDomain\" allowfullscreen=\"true\" wmode=\"opaque\" quality=\"high\" />";
+    $attr_strings = array();
+    foreach ( $args as $k => $v ) {
+        $attr_strings[] = $k . '="' . htmlspecialchars( $v, ENT_QUOTES, 'UTF-8' ) . '"';
+    }
+    return sprintf( '<embed src="%s" %s type="application/x-shockwave-flash"/>', $content, join( ' ', $attr_strings ) );
 }
 add_shortcode( 'swf', 'shortcode_swf' );
 
