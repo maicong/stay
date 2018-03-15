@@ -8,7 +8,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
  *
  * @package Stay
  * @author MaiCong
- * @version 1.1.1
+ * @version 1.1.2
  * @link https://maicong.me
  */
 
@@ -71,7 +71,8 @@ class Stay_Plugin implements Typecho_Plugin_Interface
                 '0' => _t('禁用')
             ),
             '0',
-            _t('页面代码压缩')
+            _t('页面代码压缩'),
+            _t('使用 PHP 压缩，对 TTFB 有轻微影响，酌情使用')
         );
         $mcFilter = new Typecho_Widget_Helper_Form_Element_Radio(
             'mcFilter',
@@ -80,7 +81,8 @@ class Stay_Plugin implements Typecho_Plugin_Interface
                 '0' => _t('禁用')
             ),
             '1',
-            _t('评论内容过滤')
+            _t('评论内容过滤'),
+            _t('如果你的 PHP 依赖的 PCRE 版本过旧，此功能可能无法正常使用')
         );
         $mcMailer = new Typecho_Widget_Helper_Form_Element_Radio(
             'mcMailer',
@@ -89,7 +91,8 @@ class Stay_Plugin implements Typecho_Plugin_Interface
                 '0' => _t('禁用')
             ),
             '0',
-            _t('评论邮件发送')
+            _t('评论邮件发送'),
+            _t('向被评论者发送邮件反馈')
         );
         $mcSmtpHost = new Typecho_Widget_Helper_Form_Element_Text(
             'mcSmtpHost',
@@ -225,7 +228,7 @@ class Stay_Plugin implements Typecho_Plugin_Interface
         if ($self->widget('Widget_User')->pass('administrator', true)) {
             return $comment;
         }
-        if (Helper::options()->plugin('Stay')->mcFilter) {
+        if (Helper::options()->plugin('Stay')->mcFilter && intval(PCRE_VERSION) >= 7) {
             if (preg_match('/\p{Cyrillic}+/iu', $comment['text'])) {
                 throw new Typecho_Widget_Exception('Cпасибо', 403);
             }
