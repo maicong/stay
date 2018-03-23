@@ -6,7 +6,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.0
+ * @since   1.5.2
  *
  */
 
@@ -27,6 +27,12 @@ import fastClick from 'fastclick'
 $(function () {
   // 防止重复点击
   fastClick.attach(document.body)
+
+  // 编辑器效果
+  const POWERMODE = require('./lib/powermode').POWERMODE
+  POWERMODE.colorful = true
+  POWERMODE.shake = false
+  document.body.addEventListener('input', POWERMODE)
 
   // 检查是否是本站域名
   const checkDomain = url => {
