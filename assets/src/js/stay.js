@@ -350,6 +350,7 @@ $(function () {
     const rEnd = tStart + sTag.length
     $textarea.val(`${tValue.substring(0, tStart)}${sTag}${tValue.substring(tEnd)}`)
     tElement.setSelectionRange(rStart, rEnd)
+    $('#form-face').removeClass('form__face__active')
     if (!isMobile()) {
       $textarea.focus()
     }
