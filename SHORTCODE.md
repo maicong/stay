@@ -35,7 +35,13 @@
 
 [btnvideo href="###" target="_blank"]视频按钮[/btnvideo]
 
-[btncolor href="###" target="_blank"]随机色彩[/btncolor]
+[btncolor href="###" target="_blank"]随机色彩A[/btncolor]
+
+[btncolor href="###" target="_blank"]随机色彩B[/btncolor]
+
+[btncolor href="###" target="_blank"]随机色彩C[/btncolor]
+
+[btncolor href="###" target="_blank"]随机色彩D[/btncolor]
 
 [audio src="xxx.mp3" preload="metadata"]音频播放[/audio]
 
@@ -50,9 +56,12 @@
 [item title="标题2"]选项卡2[/item]
 [/tabs]
 
-[friends]
+[friends random="false"]
 [link href="###" title="友链A说明"]友链A[/link]
 [link href="###" title="友链B说明"]友链B[/link]
+[link href="###" title="友链B说明"]友链C[/link]
+[link href="###" title="友链B说明"]友链D[/link]
+[link href="###" title="友链B说明"]友链E[/link]
 [/friends]
 ```
 
