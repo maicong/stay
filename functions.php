@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.0
+ * @since   1.5.3
  *
  */
 
@@ -243,6 +243,17 @@ function getExcerpt($content, $length = 300, $trim = ' ......') {
     $content = getContent($content);
     $content = Typecho_Common::subStr(strip_tags($content), 0, $length, $trim);
     return trim($content);
+}
+
+// 获取文章发布时间
+function getPostDate ($post, $format = null, $str = '更新于 ') {
+    $options = Typecho_Widget::widget('Widget_Options');
+    $format = $format ?: $options->postDateFormat;
+    if ($post->created !== $post->modified) {
+        return $str . date($format, $post->modified);
+    } else {
+        return date($format, $post->modified);
+    }
 }
 
 // 获取内容

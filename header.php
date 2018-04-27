@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.0
+ * @since   1.5.3
  *
  */
 
@@ -92,7 +92,7 @@ $page_title = ($this->_currentPage > 1 && !$this->is('single')) ? sprintf(' - ç¬
         </h1>
         <?php if ($this->is('post')): ?>
             <div class="header__meta">
-                <time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time>
+                <time datetime="<?php echo getPostDate($this, 'c', ''); ?>" itemprop="datePublished"><?php echo getPostDate($this); ?></time>
                 <span>/</span>
                 <?php $this->category(','); ?>
                 <span>/</span>

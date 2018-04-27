@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.3.4
+ * @since   1.5.3
  *
  */
 
@@ -28,7 +28,7 @@ $this->need('header.php');
                 <?php endif; ?>
                 <div class="post__header__warpper">
                     <div class="post__meta">
-                        <time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time>
+                        <time datetime="<?php echo getPostDate($this, 'c', ''); ?>" itemprop="datePublished"><?php echo getPostDate($this); ?></time>
                         <span>/</span>
                         <?php $this->category(','); ?>
                         <span>/</span>
