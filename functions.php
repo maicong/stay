@@ -249,7 +249,7 @@ function getExcerpt($content, $length = 300, $trim = ' ......') {
 function getPostDate ($post, $format = null, $str = '更新于 ') {
     $options = Typecho_Widget::widget('Widget_Options');
     $format = $format ?: $options->postDateFormat;
-    if ($post->created !== $post->modified) {
+    if ($post->modified - $post->created > 86400) {
         return $str . date($format, $post->modified);
     } else {
         return date($format, $post->modified);
