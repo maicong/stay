@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.1
+ * @since   1.5.3
  *
  */
 
@@ -143,6 +143,20 @@ function shortcode_button_video( $atts, $content = '' ) {
 }
 add_shortcode( 'btnvideo' , 'shortcode_button_video' );
 
+// 随机色彩按钮
+function shortcode_button_color( $atts, $content = '' ) {
+    $args = shortcode_atts( array(
+        'href' => 'http://',
+        'target' => '_blank'
+    ), $atts );
+    $colors = array(
+        '#c53929', '#3367d6', '#0b8043', '#f09300', '#616161', '#d32f2f', '#d50000', '#c2185b', '#c51162', '#7b1fa2', '#512da8', '#6200ea', '#303f9f', '#304ffe', '#1976d2', '#2962ff', '#0288d1', '#0091ea', '#0097a7', '#00b8d4', '#00796b', '#00bfa5', '#388e3c', '#00c853', '#689f38', '#afb42b', '#fbc02d', '#ffa000', '#f57c00', '#ff6500', '#e64a19', '#dd2c00', '#5d4037', '#455a64'
+    );
+    $color = $colors[array_rand($colors, 1)];
+    return '<a class="mc-button b-color" href="' . $args['href'] . '" target="' . $args['target'] . '" style="background: ' . $color . '"><span>' . $content . '</span></a>';
+}
+add_shortcode( 'btncolor' , 'shortcode_button_color' );
+
 // 音频播放
 function shortcode_audio( $atts, $content = '' ) {
     $args = shortcode_atts( array(
@@ -244,3 +258,34 @@ function shortcode_tabs( $atts, $content = '' ) {
     }
 }
 add_shortcode( 'tabs', 'shortcode_tabs' );
+
+// 友情链接
+function shortcode_link( $atts, $content = '' ) {
+    $args = shortcode_atts( array(
+        'href' => 'http://',
+        'target' => '_blank',
+        'title' => ''
+    ), $atts );
+    return '<a class="mc-link" href="' . $args['href'] . '" target="' . $args['target'] . '" title="' . $args['title'] . '"><span>' . $content . '</span></a>';
+}
+add_shortcode( 'link' , 'shortcode_link' );
+
+function shortcode_friends( $atts, $content = '' ) {
+    $args = shortcode_atts( array(
+        'random' => 'true'
+    ), $atts );
+    if ( !preg_match_all( "/\[(link)\b(.*?)(?:(\/))?\](?:(.+?)\[\/link\])/s", $content, $matches, PREG_SET_ORDER ) ) {
+        return do_shortcode( $content );
+    } else {
+        if ($args['random'] === 'true') {
+            shuffle($matches);
+        }
+        $out = '<div class="mc-friends">';
+        foreach($matches as $key => $val) {
+            $out .= '<div class="mc-friends__item">' . do_shortcode($val[0]) . '</div>';
+        }
+        $out .= '</div>';
+        return $out;
+    }
+}
+add_shortcode( 'friends', 'shortcode_friends' );
