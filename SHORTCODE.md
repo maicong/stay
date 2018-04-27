@@ -35,6 +35,8 @@
 
 [btnvideo href="###" target="_blank"]视频按钮[/btnvideo]
 
+[btncolor href="###" target="_blank"]随机色彩[/btncolor]
+
 [audio src="xxx.mp3" preload="metadata"]音频播放[/audio]
 
 [video src="xxx.mp4" preload="metadata"]视频播放[/video]
@@ -47,6 +49,11 @@
 [item title="标题1"]选项卡1[/item]
 [item title="标题2"]选项卡2[/item]
 [/tabs]
+
+[friends]
+[link href="###" title="友链A说明"]友链A[/link]
+[link href="###" title="友链B说明"]友链B[/link]
+[/friends]
 ```
 
 audio 和 video 支持 `autoplay`(自动播放) 和 `loop`(循环) 参数：
