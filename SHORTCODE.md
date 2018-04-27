@@ -59,9 +59,9 @@
 [friends random="false"]
 [link href="###" title="友链A说明"]友链A[/link]
 [link href="###" title="友链B说明"]友链B[/link]
-[link href="###" title="友链B说明"]友链C[/link]
-[link href="###" title="友链B说明"]友链D[/link]
-[link href="###" title="友链B说明"]友链E[/link]
+[link href="###" title="友链C说明"]友链C[/link]
+[link href="###" title="友链D说明"]友链D[/link]
+[link href="###" title="友链E说明"]友链E[/link]
 [/friends]
 ```
 
