@@ -4,7 +4,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.1
+ * @since   1.5.3
  *
  */
 
@@ -103,6 +103,7 @@
   position: relative;
   margin: 0 12px;
   color: rgba(255, 255, 255, .85);
+  text-shadow: 1PX 1PX 1PX rgba(0, 0, 0, 0.3);
 }
 
 .header .header__nav a:after {
@@ -794,11 +795,12 @@
   position: relative;
   height: 2.91667rem;
   line-height: 2.91667rem;
-  padding: 0 1.25rem 0 .83333rem;
+  padding: 0 1.25rem;
   margin: .83333rem 1.25rem .83333rem 0;
   text-align: center;
   font-size: 1.16667rem;
   color: #fff;
+  background-color: #616161;
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -966,6 +968,20 @@
   background-color: #c0392b;
 }
 
+.main .post__content .mc-button.b-color {
+  text-shadow: 0 0 3px rgba(0, 0, 0, .25)
+}
+
+.main .post__content .mc-button.b-color:focus,
+.main .post__content .mc-button.b-color:hover {
+  opacity: .65;
+}
+
+.main .post__content .mc-button.b-color.active,
+.main .post__content .mc-button.b-color:active {
+  opacity: .85;
+}
+
 .main .post__content .mc-toggle {
   position: relative;
   margin: 1.66667rem 0;
@@ -1079,8 +1095,34 @@
   display: block;
 }
 
-.main .page-msg .post__content {
+.main .post__content .mc-friends {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.main .post__content .mc-friends__item {
+  flex: 1 0 20%;
+  margin-bottom: 9px;
+}
+
+.main .post__content .mc-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 9px 6px;
   text-align: center;
+  cursor: pointer;
+  border: 1PX solid #bbb;
+  box-shadow: 1PX 1PX 3px 0 rgba(0, 0, 0, .2);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.main .post__content .mc-link:hover {
+  border-color: #08d;
 }
 
 .main .post__tags {
@@ -1260,6 +1302,10 @@
   to {
     transform: scaley(1);
   }
+}
+
+.main .page-msg .post__content {
+  text-align: center;
 }
 
 .main .near {
