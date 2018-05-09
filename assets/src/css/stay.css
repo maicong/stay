@@ -636,7 +636,6 @@
 .main .post__content video,
 .main .post__content embed {
   max-width: 100%;
-  height: auto;
   margin: auto;
 }
 
