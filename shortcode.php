@@ -173,7 +173,8 @@ function shortcode_audio( $atts, $content = '' ) {
     foreach ( $args as $k => $v ) {
         $attr_strings[] = $k . '="' . htmlspecialchars( $v, ENT_QUOTES, 'UTF-8' ) . '"';
     }
-    return sprintf( '<audio class="mc-audio" %s controls>%s</audio>', join( ' ', $attr_strings ), $content );
+    $audio = sprintf( '<audio class="mc-audio__source" %s controls>%s</audio>', join( ' ', $attr_strings ), $content );
+    return "<div class=\"mc-audio\"><div class=\"mc-audio__bar\"></div><div class=\"mc-audio__ctl\"><div class=\"mc-audio__ctl-btn\"></div><div class=\"mc-audio__ctl-time\">00:00</div></div>{$audio}</div>";
 }
 add_shortcode( 'audio' , 'shortcode_audio' );
 

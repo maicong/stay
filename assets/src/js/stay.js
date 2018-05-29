@@ -6,7 +6,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.3
+ * @since   1.5.4
  *
  */
 
@@ -474,6 +474,32 @@ $(function () {
         speechList[0].play()
       }
     })
+  })
+
+  // 音频播放
+  const mcAudio = $('.mc-audio__source')[0]
+  const mcAudioBar = $('.mc-audio__bar')
+  const mcAudioBtn = $('.mc-audio__ctl-btn')
+  const mcAudioTime = $('.mc-audio__ctl-time')
+  $(mcAudio).on('canplay timeupdate', () => {
+    const time = sec2minute(mcAudio.duration - mcAudio.currentTime)
+    const outer = 100 - mcAudio.currentTime / mcAudio.duration * 100
+    $(mcAudioTime).text(time)
+    $(mcAudioBar).css('transform', `translateX(-${outer}%)`)
+  })
+  $(mcAudio).on('play', () => {
+    $(mcAudioBtn).addClass('play')
+  })
+  $(mcAudio).on('ended error abort', () => {
+    $(mcAudioBtn).removeClass('play')
+  })
+  $(mcAudioBtn).on('click', () => {
+    $(mcAudioBtn).toggleClass('play')
+    if (mcAudio.paused) {
+      mcAudio.play()
+    } else {
+      mcAudio.pause()
+    }
   })
 
   // 返回顶部
