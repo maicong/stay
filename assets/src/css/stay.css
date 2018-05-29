@@ -4,7 +4,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.3
+ * @since   1.5.4
  *
  */
 
@@ -1456,6 +1456,8 @@
 
 .comments .comment__content {
   padding: 1rem 0 1rem 5rem;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .comments .comment__content a {
