@@ -143,9 +143,9 @@
 
 **不指定语言类型：**
 
-&#x60;&#x60;&#x60;
-var text = &#x27;hello&#x27;;
-alert(text);
+&#x60;&#x60;&#x60;<br>
+var text = &#x27;hello&#x27;;<br>
+alert(text);<br>
 &#x60;&#x60;&#x60;
 
 显示为：
@@ -157,9 +157,9 @@ alert(text);
 
 **指定语言类型：**
 
-&#x60;&#x60;&#x60;javascript
-var text = &#x27;hello&#x27;;
-alert(text);
+&#x60;&#x60;&#x60;javascript<br>
+var text = &#x27;hello&#x27;;<br>
+alert(text);<br>
 &#x60;&#x60;&#x60;
 
 显示为：
