@@ -448,7 +448,9 @@
 .main .post__content .summary {
   display: -webkit-box;
   -webkit-line-clamp: 4;
+  /* autoprefixer: off */
   -webkit-box-orient: vertical;
+  /* autoprefixer: on */
   text-overflow: ellipsis;
   overflow: hidden;
 }

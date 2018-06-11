@@ -11,7 +11,7 @@
 module.exports = {
   plugins: [
     require('postcss-preset-env')({
-      stage: 0,
+      stage: 2,
       browsers: [
         'Chrome >= 28',
         'Firefox >= 28',
@@ -27,7 +27,10 @@ module.exports = {
         'OperaMobile >= 12.1',
         'BlackBerry >= 10',
         'Samsung >= 4'
-      ]
+      ],
+      autoprefixer: {
+        remove: false
+      }
     }),
     require('postcss-pxtorem')({
       rootValue: 12,
