@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.4
+ * @since   1.5.5
  *
  */
 
@@ -14,7 +14,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <footer class="footer" role="contentinfo">
     <div class="container">
         <div class="footer__item">
-            <p>&copy; <?php echo date('Y'); ?> v1.5.4 <a href="https://github.com/maicong/stay" target="_blank">Theme Stay</a> <small>@</small> <a href="https://maicong.me" target="_blank">MaiCong</a> <small>❤</small> <a href="http://www.typecho.org" target="_blank">Typecho</a></p>
+            <p>&copy; <?php echo date('Y'); ?> v1.5.5 <a href="https://github.com/maicong/stay" target="_blank">Theme Stay</a> <small>@</small> <a href="https://maicong.me" target="_blank">MaiCong</a> <small>❤</small> <a href="http://www.typecho.org" target="_blank">Typecho</a></p>
         </div>
         <?php if ($this->options->customFoot): ?>
         <div class="footer__item"><?php $this->options->customFoot(); ?></div>
