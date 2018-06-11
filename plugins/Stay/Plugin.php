@@ -8,7 +8,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
  *
  * @package Stay
  * @author MaiCong
- * @version 1.1.2
+ * @version 1.1.3
  * @link https://maicong.me
  */
 
@@ -84,6 +84,16 @@ class Stay_Plugin implements Typecho_Plugin_Interface
             _t('评论内容过滤'),
             _t('如果你的 PHP 依赖的 PCRE 版本过旧，此功能可能无法正常使用')
         );
+        $mcCheckMail = new Typecho_Widget_Helper_Form_Element_Radio(
+            'mcCheckMail',
+            array(
+                '1' => _t('启用'),
+                '0' => _t('禁用')
+            ),
+            '1',
+            _t('评论邮箱验证'),
+            _t('如果你的 PHP 依赖的 PCRE 版本过旧，此功能可能无法正常使用')
+        );
         $mcMailer = new Typecho_Widget_Helper_Form_Element_Radio(
             'mcMailer',
             array(
@@ -131,6 +141,7 @@ class Stay_Plugin implements Typecho_Plugin_Interface
         );
         $form->addInput($mcMinify);
         $form->addInput($mcFilter);
+        $form->addInput($mcCheckMail);
         $form->addInput($mcMailer);
         $form->addInput($mcSmtpHost);
         $form->addInput($mcSmtpPort);
@@ -228,7 +239,10 @@ class Stay_Plugin implements Typecho_Plugin_Interface
         if ($self->widget('Widget_User')->pass('administrator', true)) {
             return $comment;
         }
-        if (Helper::options()->plugin('Stay')->mcFilter && intval(PCRE_VERSION) >= 7) {
+        if (intval(PCRE_VERSION) < 7) {
+            return $comment;
+        }
+        if (Helper::options()->plugin('Stay')->mcFilter) {
             if (preg_match('/\p{Cyrillic}+/iu', $comment['text'])) {
                 throw new Typecho_Widget_Exception('Cпасибо', 403);
             }
@@ -240,7 +254,8 @@ class Stay_Plugin implements Typecho_Plugin_Interface
             if (preg_match('/禁止此消息?/iu', $comment['text'])) {
                 throw new Typecho_Widget_Exception('您输入的方式有误', 403);
             }
-
+        }
+        if (Helper::options()->plugin('Stay')->mcCheckMail) {
             require_once __DIR__ . '/class/class.email-validate.php';
             $validator = new SMTP_Validate_Email($comment['mail']);
             if (!$validator->validate()[$comment['mail']]) {
