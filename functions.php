@@ -271,8 +271,8 @@ function getContent($content) {
     );
     // 代码行号
     $content = preg_replace(
-        '/<pre( class="(.*?)")?/iu',
-        '<pre class="$1 line-numbers"',
+        '/<pre><code class="lang-/iu',
+        '<pre class="line-numbers"><code class="lang-',
         $content
     );
     return $content;
@@ -532,8 +532,8 @@ function convertComments ($content) {
     );
     // 代码行号
     $content = preg_replace(
-        '/<pre( class="(.*?)")?/iu',
-        '<pre class="$1 line-numbers"',
+        '/<pre><code class="lang-/iu',
+        '<pre class="line-numbers"><code class="lang-',
         $content
     );
     return $content;
