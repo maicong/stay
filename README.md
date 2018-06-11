@@ -13,6 +13,7 @@
   - [更换头部背景图](#更换头部背景图)
   - [百度BDUSS](#百度bduss)
   - [搜索页](#搜索页)
+  - [代码高亮](#代码高亮)
 - [预览图](#预览图)
 - [如何更新](#如何更新)
 
@@ -135,6 +136,61 @@
 
 1. 进入 `控制台->管理->独立页面`，新增一个页面
 2. 将别名（slug）填写为 `search`，在右侧自定义模板选择 `搜索`。
+
+### 代码高亮
+
+使用 markdown 书写，插入代码块并高亮，需要在 ``` 后面指定代码语言类型，比如高亮 javascript：
+
+**不指定语言类型：**
+
+&#x60;&#x60;&#x60;
+var text = &#x27;hello&#x27;;
+alert(text);
+&#x60;&#x60;&#x60;
+
+显示为：
+
+```
+var text = 'hello';
+alert(text);
+```
+
+**指定语言类型：**
+
+&#x60;&#x60;&#x60;javascript
+var text = &#x27;hello&#x27;;
+alert(text);
+&#x60;&#x60;&#x60;
+
+显示为：
+
+```javascript
+var text = 'hello';
+alert(text);
+```
+
+使用 html 书写，高亮代码需要给 pre 标签添加 `lang` 属性来指定代码语言，例如：
+
+```html
+<pre lang="javascript">
+var text = 'hello';
+alert(text);
+</pre>
+```
+
+显示为：
+
+<pre lang="javascript">
+var text = 'hello';
+alert(text);
+</pre>
+
+不指定则显示为：
+
+<pre>
+var text = 'hello';
+alert(text);
+</pre>
 
 ## 预览图
 
