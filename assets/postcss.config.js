@@ -10,8 +10,8 @@
 
 module.exports = {
   plugins: [
-    require('postcss-cssnext')({
-      warnForDuplicates: false,
+    require('postcss-preset-env')({
+      stage: 0,
       browsers: [
         'Chrome >= 28',
         'Firefox >= 28',
