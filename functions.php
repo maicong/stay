@@ -526,8 +526,8 @@ function convertComments ($content) {
     $content = convertFaces($content);
     // 匹配链接
     $content = preg_replace(
-        '/[^="](https?:\/\/[a-zA-Z0-9\/\-_.:=#?&%]+)/iu',
-        '<a href="$1">$1</a>',
+        '/([^="]+)(https?:\/\/[a-zA-Z0-9\/\-_.:=#?&%]+)/iu',
+        '$1<a href="$2">$2</a>',
         $content
     );
     // 代码行号
