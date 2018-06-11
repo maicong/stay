@@ -127,9 +127,9 @@ const config = {
       path: 'assets/build/',
       phpClassName: 'WebpackManifest'
     }),
-    new ProgressBarPlugin(),
     new Webpack.optimize.OccurrenceOrderPlugin(),
-    new Webpack.optimize.AggressiveMergingPlugin()
+    new Webpack.optimize.AggressiveMergingPlugin(),
+    new ProgressBarPlugin()
   ]
 }
 
@@ -143,6 +143,7 @@ if (IS_PROD) {
       extractComments: false,
       uglifyOptions: {
         ie8: false,
+        safari10: true,
         ecma: 5,
         mangle: true,
         sourceMap: false,
@@ -153,6 +154,7 @@ if (IS_PROD) {
         },
         output: {
           comments: false,
+          beautify: false,
           ascii_only: true
         }
       }
