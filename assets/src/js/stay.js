@@ -6,7 +6,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.4
+ * @since   1.5.5
  *
  */
 
@@ -490,16 +490,24 @@ $(function () {
   $(mcAudio).on('play', () => {
     $(mcAudioBtn).addClass('play')
   })
-  $(mcAudio).on('ended error abort', () => {
+  $(mcAudio).on('ended', () => {
+    $(mcAudioBtn).removeClass('play')
+  })
+  $(mcAudio).on('error abort', () => {
+    $(mcAudioTime).text('音频加载失败')
     $(mcAudioBtn).removeClass('play')
   })
   $(mcAudioBtn).on('click', () => {
-    $(mcAudioBtn).toggleClass('play')
+    if (mcAudio.error) {
+      $(mcAudioTime).text('音频加载失败')
+      return
+    }
     if (mcAudio.paused) {
       mcAudio.play()
     } else {
       mcAudio.pause()
     }
+    $(mcAudioBtn).toggleClass('play')
   })
 
   // 返回顶部
