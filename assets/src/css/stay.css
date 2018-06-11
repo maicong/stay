@@ -4,7 +4,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.4
+ * @since   1.5.5
  *
  */
 
@@ -623,13 +623,19 @@
 }
 
 .main .post__content pre {
-  line-height: 1.45;
-  padding: 20px;
-  font-size: 18px;
+  padding: 1.5rem;
+  font-size: 1.5rem;
   background-color: #f7f7f7;
   border-radius: 3px;
-  box-shadow: inset 2px 2px 4px -2px rgba(0, 0, 0, 0.35);
   overflow: auto;
+}
+
+.main .post__content .line-numbers {
+  padding-left: 4rem;
+}
+
+.main .post__content .line-numbers-rows {
+  left: -4rem;
 }
 
 .main .post__content audio,
@@ -1133,6 +1139,7 @@
   border: 1PX solid #eee;
   border-radius: 6px;
   overflow: hidden;
+  user-select: none;
 }
 
 .main .post__content .mc-audio__bar {
@@ -1149,6 +1156,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  height: 100%;
   padding: 0 12px;
 }
 
@@ -1174,32 +1182,32 @@
 }
 
 .main .post__content .mc-audio__ctl-btn:before {
-  border-width: 12px 0 12px 24px;
+  border-width: 9px 0 9px 18px;
   border-color: transparent #ddd;
 }
 
 .main .post__content .mc-audio__ctl-btn:after {
-  left: 18px;
-  border-width: 12px 4px;
+  left: 15px;
+  border-width: 9px 3px;
   border-color: #ddd;
   opacity: 0;
   transform: translateX(100%);
 }
 
 .main .post__content .mc-audio__ctl-btn.play:before {
-  border-width: 12px 4px;
+  border-width: 9px 3px;
   border-color: #ddd;
 }
 
 .main .post__content .mc-audio__ctl-btn.play:after {
-  border-width: 12px 4px;
+  border-width: 9px 3px;
   opacity: 1;
   transform: translateX(0);
 }
 
 .main .post__content .mc-audio__ctl-time {
   flex: 1;
-  font-size: 18px;
+  font-size: 15px;
   font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
   color: #ccc;
   text-align: right;
@@ -1547,6 +1555,18 @@
 
 .comments .comment__content a {
   text-decoration: underline;
+}
+
+.comments .comment__content pre {
+  font-size: 1.3rem;
+  padding: 1.3rem;
+  background-color: #f9f9f9;
+  border-radius: 3px;
+  overflow: auto;
+}
+
+.comments .comment__content .line-numbers {
+  padding-left: 3rem;
 }
 
 .comments .comment__content .face {

@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.3
+ * @since   1.5.5
  *
  */
 
@@ -259,12 +259,20 @@ function getPostDate ($post, $format = null, $str = '更新于 ') {
 // 获取内容
 function getContent($content) {
     $options = Typecho_Widget::widget('Widget_Options');
+    // 短代码
     if ($options->shortcode) {
         $content = do_shortcode($content);
     }
+    // 图片占位符
     $content = preg_replace(
         ['/<p>(<div(.+?)<\/div>)<\/p>/', '/<img(.+?)src="/'],
         ['$1', '<img$1src="' . __LAZYIMG__ . '" data-original="'],
+        $content
+    );
+    // 代码行号
+    $content = preg_replace(
+        '/<pre( class="(.*?)")?/iu',
+        '<pre class="$1 line-numbers"',
         $content
     );
     return $content;
@@ -517,7 +525,17 @@ function convertFaces ($content) {
 function convertComments ($content) {
     $content = convertFaces($content);
     // 匹配链接
-    $content = preg_replace('/(https?:\/\/[a-zA-Z0-9\/\-_.=#?&%]+)/iu', '<a href="$1">$1</a>',$content);
+    $content = preg_replace(
+        '/[^="](https?:\/\/[a-zA-Z0-9\/\-_.:=#?&%]+)/iu',
+        '<a href="$1">$1</a>',
+        $content
+    );
+    // 代码行号
+    $content = preg_replace(
+        '/<pre( class="(.*?)")?/iu',
+        '<pre class="$1 line-numbers"',
+        $content
+    );
     return $content;
 }
 
