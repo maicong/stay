@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.4
+ * @since   1.5.6
  *
  */
 
@@ -267,7 +267,7 @@ function shortcode_link( $atts, $content = '' ) {
         'target' => '_blank',
         'title' => ''
     ), $atts );
-    return '<a class="mc-link" href="' . $args['href'] . '" target="' . $args['target'] . '" title="' . $args['title'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-link" href="' . $args['href'] . '" target="' . $args['target'] . '"><span class="mc-link__name">' . $content . '</span><span class="mc-link__title">' . $args['title'] . '</span></a>';
 }
 add_shortcode( 'link' , 'shortcode_link' );
 
