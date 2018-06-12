@@ -6,7 +6,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.5
+ * @since   1.5.6
  *
  */
 
@@ -124,6 +124,7 @@ $(function () {
                 document.title = title
                 pushState(title, link)
                 imgLazyLoad('.comments .avatar')
+                window.Prism.highlightAll()
                 $('#__newpage').length && animateScrollTo($('#__newpage').offset().top)
               }
               break
@@ -270,6 +271,7 @@ $(function () {
                 animateScrollTo($('#comment-list').offset().top)
               }
               imgLazyLoad('.comments .avatar')
+              window.Prism.highlightAll()
             })
           }
         }
