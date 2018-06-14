@@ -1509,6 +1509,10 @@
   padding-left: 5rem;
 }
 
+.comments .comment-list .children .token.comment {
+  padding-left: 0;
+}
+
 @media screen and (max-width: 640px) {
   .comments .comment-list .children .children .comment {
     padding-left: 0;
