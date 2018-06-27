@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.4.2
+ * @since   1.5.7
  *
  */
 
@@ -18,14 +18,22 @@ if ($this->request->isAjax() && $this->request->is('do=getSpeech')) {
     ]);
 }
 
+$halfyear = 3600 * 24 * 30 * 6;
+$lostTime = time() - $this->modified;
+
 $this->need('header.php');
 ?>
 <main class="main" role="main">
     <div class="container">
         <article class="card post single" itemscope itemtype="http://schema.org/BlogPosting">
+            <?php if (time() - $this->modified > $halfyear): ?>
+            <div class="post-warning">
+                <p>这篇文章距离上次修改已过半年，其中的信息可能已经有所发展或是发生改变。</p>
+            </div>
+            <?php endif; ?>
             <?php if ($this->options->text2speech): ?>
             <div id="post-text2speech" class="post__text2speech">
-                <i class="icon"></i>
+                <i class="speechicon"></i>
                 <span id="post-text2speech-text" class="text">转换为语音并朗读全文</span>
                 <span id="post-text2speech-time" class="time">00:00 / 00:00</span>
                 <span id="post-text2speech-progress" class="progress"></span>
