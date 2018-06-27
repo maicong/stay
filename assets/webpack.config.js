@@ -4,7 +4,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.2.0
+ * @since   1.5.7
  *
  */
 
@@ -101,11 +101,25 @@ const config = {
         })
       },
       {
-        test: /\.(gif|png|jpe?g)$/,
+        test: /\.(gif|png|jpe?g|svg)$/,
         loader: 'url-loader',
         options: {
-          limit: 3072,
-          name: posix.join('img', IS_PROD ? '[name]-[hash:7].[ext]' : '[name]-[hash:7].source.[ext]')
+          limit: 5120,
+          name: posix.join(
+            'img',
+            IS_PROD ? '[name]-[hash:7].[ext]' : '[name]-[hash:7].source.[ext]'
+          )
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 5120,
+          name: posix.join(
+            'font',
+            IS_PROD ? '[name]-[hash:7].[ext]' : '[name]-[hash:7].source.[ext]'
+          )
         }
       }
     ]
