@@ -19,6 +19,8 @@
 
 [btntext href="###" target="_blank"]文本按钮[/btntext]
 
+[btndocument href="###" target="_blank"]文档按钮[/btndocument]
+
 [btnheart href="###" target="_blank"]爱心按钮[/btnheart]
 
 [btnbox href="###" target="_blank"]盒子按钮[/btnbox]
