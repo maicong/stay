@@ -11,10 +11,10 @@
 @font-face {
   font-family: "iconfont";
   src: url('../font/iconfont.eot?t=1530083306654'); /* IE9 */
-  src: url('../font/iconfont.eot?t=1530083306654#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../font/iconfont.woff?t=1530083306654#iconfont') format('woff'),
+  src: url('../font/iconfont.eot?t=1530083306654%23iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../font/iconfont.woff?t=1530083306654%23iconfont') format('woff'),
   url('../font/iconfont.ttf?t=1530083306654') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  url('../font/iconfont.svg?t=1530083306654#iconfont') format('svg'); /* iOS 4.1- */
+  url('../font/iconfont.svg?t=1530083306654%23iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .icon {
