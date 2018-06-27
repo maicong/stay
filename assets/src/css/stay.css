@@ -4,7 +4,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.6
+ * @since   1.5.7
  *
  */
 
@@ -391,6 +391,15 @@
   text-shadow: 0 0 0.25rem #316f65;
 }
 
+.main .post-warning {
+  font-size: 16px;
+  padding: 6px 12px;
+  margin-top: 2rem;
+  color: #b59d78;
+  background: #fffae2;
+  border: 1PX solid #ffdda9;
+}
+
 .main .post__text2speech {
   position: relative;
   display: flex;
@@ -416,7 +425,7 @@
   border-bottom: 1PX solid #76bda3;
 }
 
-.main .post__text2speech .icon {
+.main .post__text2speech .speechicon {
   width: 24px;
   height: 24px;
   background: url(../img/audio_bg.png) center no-repeat;
@@ -436,7 +445,7 @@
   color: #888;
 }
 
-.main .post__text2speech.isPlaying .icon {
+.main .post__text2speech.isPlaying .speechicon {
   background-image: url(../img/audio_play.png)
 }
 
@@ -761,7 +770,7 @@
 .main .post__content .mc-panel {
   position: relative;
   padding: .83333rem;
-  margin: .41667rem auto;
+  margin-bottom: 16px;
   border: .08333rem solid transparent;
   word-wrap: break-word;
   word-break: break-all;
@@ -802,7 +811,6 @@
   position: relative;
   height: 2.91667rem;
   line-height: 2.91667rem;
-  padding: 0 1.25rem;
   margin: .83333rem 1.25rem .83333rem 0;
   text-align: center;
   font-size: 1.16667rem;
@@ -818,6 +826,18 @@
 
 .main .post__content .mc-button a {
   color: #fff;
+}
+
+.main .post__content .mc-button .icon {
+  width: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0 1rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.main .post__content .mc-button span {
+  padding: 0 1.2rem;
 }
 
 .main .post__content .mc-button.b-down {
@@ -855,7 +875,7 @@
   background-color: #d0d0d0;
 }
 
-.main .post__content .mc-button.b-text .iconfont {
+.main .post__content .mc-button.b-text .icon {
   color: #555;
 }
 
@@ -1148,7 +1168,7 @@
 .main .post__content .mc-link__name {
   display: block;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 600;
   color: #666;
   transition: all .3s;
 }
@@ -1170,7 +1190,6 @@
 }
 
 .main .post__content .mc-link:hover .mc-link__name {
-  font-weight: 600;
   color: #333;
 }
 
