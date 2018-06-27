@@ -6,15 +6,16 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.6
+ * @since   1.5.7
  *
  */
 
 /* 加载 css */
 import '../css/normal'
-import '../css/prismjs'
+import '../css/icon'
 import '../css/face'
 import '../css/stay'
+import '../css/prismjs'
 import './lib/lazyload'
 import './lib/prism'
 
