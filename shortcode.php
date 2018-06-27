@@ -5,7 +5,7 @@
  *
  * @author  MaiCong <i@maicong.me>
  * @link    https://github.com/maicong/stay
- * @since   1.5.6
+ * @since   1.5.7
  *
  */
 
@@ -49,7 +49,7 @@ function shortcode_button_text( $atts, $content = '' ) {
         'href' => 'http://',
         'target' => '_blank'
     ), $atts );
-    return '<a class="mc-button b-text" href="' .  $args['href'] . '" target="' . $args['target'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-text" href="' .  $args['href'] . '" target="' . $args['target'] . '"><i class="icon icon-text"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btntext' , 'shortcode_button_text' );
 
@@ -59,7 +59,7 @@ function shortcode_button_document( $atts, $content = '' ) {
         'href' => 'http://',
         'target' => '_blank'
     ), $atts );
-    return '<a class="mc-button b-document" href="' . $args['href'] . '" target="' . $args['target'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-document" href="' . $args['href'] . '" target="' . $args['target'] . '"><i class="icon icon-help"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btndocument' , 'shortcode_button_document' );
 
@@ -69,7 +69,7 @@ function shortcode_button_heart( $atts, $content = '' ) {
         'href' => 'http://',
         'target' => '_blank'
     ), $atts );
-    return '<a class="mc-button b-heart" href="' . $args['href'] . '" target="' . $args['target'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-heart" href="' . $args['href'] . '" target="' . $args['target'] . '"><i class="icon icon-fav"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btnheart' , 'shortcode_button_heart' );
 
@@ -79,7 +79,7 @@ function shortcode_button_box( $atts, $content = '' ) {
         'href' => 'http://',
         'target' => '_blank'
     ), $atts );
-    return '<a class="mc-button b-box" href="' . $args['href'] . '" target="' . $args['target'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-box" href="' . $args['href'] . '" target="' . $args['target'] . '"><i class="icon icon-box"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btnbox' , 'shortcode_button_box' );
 
@@ -89,7 +89,7 @@ function shortcode_button_search( $atts, $content = '' ) {
         'href' => 'http://',
         'target' => '_blank'
     ), $atts );
-    return '<a class="mc-button b-search" href="' . $args['href'] . '" target="' . $args['target'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-search" href="' . $args['href'] . '" target="' . $args['target'] . '"><i class="icon icon-search"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btnsearch' , 'shortcode_button_search' );
 
@@ -99,7 +99,7 @@ function shortcode_button_link( $atts, $content = '' ) {
         'href' => 'http://',
         'target' => '_blank'
     ), $atts );
-    return '<a class="mc-button b-link" href="' . $args['href'] . '" target="' . $args['target'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-link" href="' . $args['href'] . '" target="' . $args['target'] . '"><i class="icon icon-link"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btnlink' , 'shortcode_button_link' );
 
@@ -109,7 +109,7 @@ function shortcode_button_down( $atts, $content = '' ) {
         'href' => 'http://',
         'target' => '_blank'
     ), $atts );
-    return '<a class="mc-button b-down" href="' . $args['href'] . '" target="' . $args['target'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-down" href="' . $args['href'] . '" target="' . $args['target'] . '"><i class="icon icon-download"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btndown' , 'shortcode_button_down' );
 
@@ -119,7 +119,7 @@ function shortcode_button_next( $atts, $content = '' ) {
         'href' => 'http://',
         'target' => '_blank'
     ), $atts );
-    return '<a class="mc-button b-next" href="' . $args['href'] . '" target="' . $args['target'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-next" href="' . $args['href'] . '" target="' . $args['target'] . '"><i class="icon icon-skip"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btnnext' , 'shortcode_button_next' );
 
@@ -129,7 +129,7 @@ function shortcode_button_audio( $atts, $content = '' ) {
         'href' => 'http://',
         'target' => '_blank'
     ), $atts );
-    return '<a class="mc-button b-audio" href="' . $args['href'] . '" target="' . $args['target'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-audio" href="' . $args['href'] . '" target="' . $args['target'] . '"><i class="icon icon-remind"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btnaudio' , 'shortcode_button_audio' );
 
@@ -139,7 +139,7 @@ function shortcode_button_video( $atts, $content = '' ) {
         'href' => 'http://',
         'target' => '_blank'
     ), $atts );
-    return '<a class="mc-button b-video" href="' . $args['href'] . '" target="' . $args['target'] . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-video" href="' . $args['href'] . '" target="' . $args['target'] . '"><i class="icon icon-video"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btnvideo' , 'shortcode_button_video' );
 
@@ -153,7 +153,7 @@ function shortcode_button_color( $atts, $content = '' ) {
         '#c53929', '#3367d6', '#0b8043', '#f09300', '#616161', '#d32f2f', '#d50000', '#c2185b', '#c51162', '#7b1fa2', '#512da8', '#6200ea', '#303f9f', '#304ffe', '#1976d2', '#2962ff', '#0288d1', '#0091ea', '#0097a7', '#00b8d4', '#00796b', '#00bfa5', '#388e3c', '#00c853', '#689f38', '#afb42b', '#fbc02d', '#ffa000', '#f57c00', '#ff6500', '#e64a19', '#dd2c00', '#5d4037', '#455a64'
     );
     $color = $colors[array_rand($colors, 1)];
-    return '<a class="mc-button b-color" href="' . $args['href'] . '" target="' . $args['target'] . '" style="background: ' . $color . '"><span>' . $content . '</span></a>';
+    return '<a class="mc-button b-color" href="' . $args['href'] . '" target="' . $args['target'] . '" style="background: ' . $color . '"><i class="icon icon-light"></i><span>' . $content . '</span></a>';
 }
 add_shortcode( 'btncolor' , 'shortcode_button_color' );
 
