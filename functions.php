@@ -443,9 +443,9 @@ function getSpeech ($title, $content) {
     $options = Typecho_Widget::widget('Widget_Options');
     $result = mcFetch(array(
         'method' => 'POST',
-        'url' => 'http://developer.baidu.com/vcast/getVcastInfo',
+        'url' => 'https://developer.baidu.com/vcast/getVcastInfo',
         'header' => array(
-            'Referer' => 'http://developer.baidu.com/vcast',
+            'Referer' => 'https://developer.baidu.com/vcast',
             'Content-Type' => 'application/x-www-form-urlencoded; charset=UTF-8',
             'X-Requested-With' => 'XMLHttpRequest',
             'Cookie' => 'BDUSS=' . $options->baiduBDUSS
