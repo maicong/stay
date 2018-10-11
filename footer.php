@@ -22,6 +22,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <div id="footer-beaker" class="footer__beaker"><span></span></div>
     </div>
 </footer>
+<script>var POWERMODE = <?php echo $this->options->powerMode ? 'true' : 'false'; ?></script>
 <script src="<?php getBuildFile('js'); ?>"></script>
 <?php if ($this->options->analyticsCode): ?>
 <div style="display:none"><?php $this->options->analyticsCode(); ?></div>

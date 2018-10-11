@@ -37,6 +37,16 @@ function themeConfig($form) {
         _t('短代码支持'),
         _t('是否启用短代码支持，移植的 WordPress 功能')
     );
+    $powerMode = new Typecho_Widget_Helper_Form_Element_Radio(
+        'powerMode',
+        array(
+            '1' => '开启',
+            '0' => '关闭'
+        ),
+        '0',
+        _t('评论框特效'),
+        _t('是否启用评论框输入特效')
+    );
     // $siteStyle = new Typecho_Widget_Helper_Form_Element_Radio(
     //     'siteStyle',
     //     array(
@@ -185,6 +195,7 @@ function themeConfig($form) {
     );
     $form->addInput($navCategory);
     $form->addInput($shortcode);
+    $form->addInput($powerMode);
     // $form->addInput($siteStyle);
     $form->addInput($headBgUrl);
     $form->addInput($text2speech);
